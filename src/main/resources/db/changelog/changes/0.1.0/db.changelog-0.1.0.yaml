@@ -1,0 +1,20 @@
+databaseChangeLog:
+  - include:
+      file: classpath*:db/changelog/changes/0.1.0/0.1.0-initial-database.xml
+  - include:
+      file: classpath*:db/changelog/changes/0.1.0/0.1.0-sample-data-codigos-economicos-gastos.xml
+  - include:
+      file: classpath*:db/changelog/changes/0.1.0/0.1.0-sample-data-codigos-economicos-ingresos.xml
+  - include:
+      file: classpath*:db/changelog/changes/0.1.0/0.1.0-sample-data-proyectos.xml
+  - include:
+      file: classpath*:db/changelog/changes/0.1.0/0.1.0-sample-data-partidas-presupuestarias-gastos.xml
+  - include:
+      file: classpath*:db/changelog/changes/0.1.0/0.1.0-sample-data-partidas-presupuestarias-ingresos.xml
+  - include:
+      file: classpath*:db/changelog/changes/0.1.0/0.1.0-sample-data-datos-economicos.xml
+  - include:
+      file: classpath*:db/changelog/changes/0.1.0/0.1.0-sample-data-datos-economicos-documentos.xml
+  - include:
+      file: classpath*:db/changelog/changes/0.1.0/0.1.0-sample-data-calendario-facturacion.xml
+  

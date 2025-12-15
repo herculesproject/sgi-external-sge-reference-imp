@@ -1,0 +1,72 @@
+<?xml version="1.1" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+  xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+  xmlns:pro="http://www.liquibase.org/xml/ns/pro"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd
+                      http://www.liquibase.org/xml/ns/pro http://www.liquibase.org/xml/ns/pro/liquibase-pro-3.8.xsd
+                      http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.8.xsd">
+
+  <!-- Datos iniciales para EPA -->
+  <changeSet context="dev" author="master" id="00.01.00-dato-economico-documento-1">
+    <insert tableName="dato_economico_documento">
+      <column name="id" value="1" />
+      <column name="dato_economico_id" value="9" />
+      <column name="nombre" value="documento fjf123" />
+      <column name="nombre_fichero" value="fjf123" />
+      <column name="contenido" valueBlobFile="blob/documento_economico.pdf" />
+    </insert>
+  </changeSet>
+
+  <changeSet context="dev" author="master" id="00.01.00-dato-economico-documento-2">
+    <insert tableName="dato_economico_documento">
+      <column name="id" value="2" />
+      <column name="dato_economico_id" value="10" />
+      <column name="nombre" value="factura comida" />
+      <column name="nombre_fichero" value="factura_comida" />
+      <column name="contenido" valueBlobFile="blob/documento_economico.pdf" />
+    </insert>
+
+    <insert tableName="dato_economico_documento">
+      <column name="id" value="3" />
+      <column name="dato_economico_id" value="10" />
+      <column name="nombre" value="factura gasolina" />
+      <column name="nombre_fichero" value="factura_gasolina" />
+      <column name="contenido" valueBlobFile="blob/documento_economico.pdf" />
+    </insert>
+
+    <insert tableName="dato_economico_documento">
+      <column name="id" value="4" />
+      <column name="dato_economico_id" value="10" />
+      <column name="nombre" value="factura alojamiento" />
+      <column name="nombre_fichero" value="factura_alojamiento" />
+      <column name="contenido" valueBlobFile="blob/documento_economico.pdf" />
+    </insert>
+
+    <insert tableName="dato_economico_documento">
+      <column name="id" value="5" />
+      <column name="dato_economico_id" value="11" />
+      <column name="nombre" value="nombre documento" />
+      <column name="nombre_fichero" value="fichero" />
+      <column name="contenido" valueBlobFile="blob/documento_economico.pdf" />
+    </insert>
+
+
+    <insert tableName="dato_economico_documento">
+      <column name="id" value="6" />
+      <column name="dato_economico_id" value="12" />
+      <column name="nombre" value="nombre documento" />
+      <column name="nombre_fichero" value="fichero" />
+      <column name="contenido" valueBlobFile="blob/documento_economico.pdf" />
+    </insert>
+
+    <insert tableName="dato_economico_documento">
+      <column name="id" value="7" />
+      <column name="dato_economico_id" value="13" />
+      <column name="nombre" value="nombre documento" />
+      <column name="nombre_fichero" value="fichero" />
+      <column name="contenido" valueBlobFile="blob/documento_economico.pdf" />
+    </insert>
+  </changeSet>
+
+</databaseChangeLog>

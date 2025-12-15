@@ -1,0 +1,245 @@
+<?xml version="1.1" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+  xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+  xmlns:pro="http://www.liquibase.org/xml/ns/pro"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd
+                      http://www.liquibase.org/xml/ns/pro http://www.liquibase.org/xml/ns/pro/liquibase-pro-3.8.xsd
+                      http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.8.xsd">
+
+  <changeSet author="user (generated)" id="00.01.00-1">
+    <createTable tableName="codigo_economico_gasto">
+      <column name="id" type="VARCHAR(255)">
+        <constraints nullable="false" primaryKey="true" primaryKeyName="codigo_economico_gastoPK" />
+      </column>
+      <column name="fecha_fin" type="TIMESTAMP" />
+      <column name="fecha_inicio" type="TIMESTAMP" />
+      <column name="nombre" type="VARCHAR(255)">
+        <constraints nullable="false" />
+      </column>
+    </createTable>
+  </changeSet>
+
+  <changeSet author="user (generated)" id="00.01.00-2">
+    <createTable tableName="codigo_economico_ingreso">
+      <column name="id" type="VARCHAR(255)">
+        <constraints nullable="false" primaryKey="true" primaryKeyName="codigo_economico_ingresoPK" />
+      </column>
+      <column name="fecha_fin" type="TIMESTAMP" />
+      <column name="fecha_inicio" type="TIMESTAMP" />
+      <column name="nombre" type="VARCHAR(255)">
+        <constraints nullable="false" />
+      </column>
+    </createTable>
+  </changeSet>
+
+  <changeSet author="user (generated)" id="00.01.00-3">
+    <createSequence incrementBy="1" sequenceName="proyecto_seq" startValue="1" />
+    <createTable tableName="proyecto">
+      <column name="id" type="BIGINT">
+        <constraints nullable="false" primaryKey="true" primaryKeyName="proyectoPK" />
+      </column>
+      <column name="fecha_fin" type="TIMESTAMP" />
+      <column name="fecha_inicio" type="TIMESTAMP" />
+      <column name="proyecto_sgi_id" type="VARCHAR(255)" />
+      <column name="titulo" type="VARCHAR(255)" />
+      <column name="responsable_ref" type="VARCHAR(255)" />
+    </createTable>
+  </changeSet>
+
+  <changeSet author="user (generated)" id="00.01.00-4">
+    <createSequence incrementBy="1" sequenceName="proyecto_anualidad_partida_seq" startValue="1" />
+    <createTable tableName="proyecto_anualidad_partida">
+      <column name="id" type="BIGINT">
+        <constraints nullable="false" primaryKey="true"
+          primaryKeyName="proyecto_anualidad_partidaPK" />
+      </column>
+      <column name="anualidad" type="INT">
+        <constraints nullable="false" />
+      </column>
+      <column name="importe" type="DECIMAL(19, 2)">
+        <constraints nullable="false" />
+      </column>
+      <column name="partida_presupuestaria" type="VARCHAR(50)">
+        <constraints nullable="false" />
+      </column>
+      <column name="proyecto_id" type="BIGINT">
+        <constraints nullable="false" />
+      </column>
+      <column name="tipo" type="VARCHAR(1)">
+        <constraints nullable="false" />
+      </column>
+    </createTable>
+  </changeSet>
+
+  <changeSet author="user (generated)" id="00.01.00-5">
+    <addForeignKeyConstraint baseColumnNames="proyecto_id"
+      baseTableName="proyecto_anualidad_partida"
+      constraintName="FK_PROYECTO_ANUALIDAD_PARTIDA_PROYECTO" deferrable="false"
+      initiallyDeferred="false" referencedColumnNames="id" referencedTableName="proyecto"
+      validate="true" />
+  </changeSet>
+
+  <changeSet author="user (generated)" id="00.01.00-6">
+    <createTable tableName="partida_presupuestaria_gasto">
+      <column name="id" type="VARCHAR(255)">
+        <constraints nullable="false" primaryKey="true"
+          primaryKeyName="partida_presupuestaria_gastoPK" />
+      </column>
+      <column name="fecha_fin" type="TIMESTAMP" />
+      <column name="fecha_inicio" type="TIMESTAMP" />
+      <column name="codigo" type="VARCHAR(255)">
+        <constraints nullable="false" />
+      </column>
+      <column name="descripcion" type="VARCHAR(255)">
+        <constraints nullable="false" />
+      </column>
+    </createTable>
+  </changeSet>
+
+  <changeSet author="user (generated)" id="00.01.00-7">
+    <createTable tableName="partida_presupuestaria_ingreso">
+      <column name="id" type="VARCHAR(255)">
+        <constraints nullable="false" primaryKey="true"
+          primaryKeyName="partida_presupuestaria_ingresoPK" />
+      </column>
+      <column name="fecha_fin" type="TIMESTAMP" />
+      <column name="fecha_inicio" type="TIMESTAMP" />
+      <column name="codigo" type="VARCHAR(255)">
+        <constraints nullable="false" />
+      </column>
+      <column name="descripcion" type="VARCHAR(255)">
+        <constraints nullable="false" />
+      </column>
+    </createTable>
+  </changeSet>
+
+  <changeSet author="user (generated)" id="00.01.00-8">
+    <createSequence incrementBy="1" sequenceName="dato_economico_seq" startValue="1" />
+    <createTable tableName="dato_economico">
+      <column name="id" type="VARCHAR(255)">
+        <constraints primaryKey="true" nullable="false" />
+      </column>
+      <column name="proyecto_id" type="VARCHAR(255)">
+        <constraints nullable="true" />
+      </column>
+      <column name="invencion_id" type="VARCHAR(255)">
+        <constraints nullable="true" />
+      </column>
+      <column name="anualidad" type="VARCHAR(4)">
+        <constraints nullable="true" />
+      </column>
+      <column name="tipo_dato_economico" type="VARCHAR(10)">
+        <constraints nullable="true" checkConstraint="tipo_dato_economico IN ('Gasto','Ingreso')" />
+      </column>
+      <column name="tipo_operacion" type="VARCHAR(10)">
+        <constraints nullable="false"
+          checkConstraint="tipo_operacion IN ('EPA','EPG','EPI','FJF','FJV','FJP','DOG','DOI','DOM','GAS','PIII')" />
+      </column>
+      <column name="aplicacion_presupuestaria" type="VARCHAR(255)" />
+      <column name="fecha" type="TIMESTAMP" />
+      <column name="fecha_emision" type="TIMESTAMP" />
+      <column name="fecha_cobro" type="TIMESTAMP" />
+      <column name="fecha_devengo" type="TIMESTAMP" />
+      <column name="fecha_salida" type="TIMESTAMP" />
+      <column name="fecha_vuelta" type="TIMESTAMP" />
+      <column name="descripcion" type="VARCHAR(255)" />
+      <column name="destino" type="VARCHAR(255)" />
+      <column name="numero_documento" type="VARCHAR(255)" />
+      <column name="numero_identificacion" type="VARCHAR(255)" />
+      <column name="numero_comision" type="VARCHAR(255)" />
+      <column name="numero_prevision" type="VARCHAR(255)" />
+      <column name="nombre_completo" type="VARCHAR(255)" />
+
+      <column name="importe_inicial" type="DECIMAL(19,2)" />
+      <column name="importe_definitivo" type="DECIMAL(19,2)" />
+      <column name="importe_disponible" type="DECIMAL(19,2)" />
+      <column name="derechos" type="DECIMAL(19,2)" />
+      <column name="cobros" type="DECIMAL(19,2)" />
+
+      <column name="importe_presupuestado" type="DECIMAL(19,2)" />
+      <column name="importe_concedido" type="DECIMAL(19,2)" />
+      <column name="gastado" type="DECIMAL(19,2)" />
+      <column name="pagado" type="DECIMAL(19,2)" />
+      <column name="pendiente_pago" type="DECIMAL(19,2)" />
+      <column name="reservado" type="DECIMAL(19,2)" />
+      <column name="disponible" type="DECIMAL(19,2)" />
+      <column name="gastado_ejecutado" type="DECIMAL(19,2)" />
+      <column name="gastado_comprometido" type="DECIMAL(19,2)" />
+      <column name="tercero" type="VARCHAR(255)" />
+      <column name="importe_iva" type="DECIMAL(19,2)" />
+      <column name="porcentaje_iva" type="DECIMAL(5, 2)" />
+      <column name="importe_locomocion" type="DECIMAL(19,2)" />
+      <column name="importe_alojamiento" type="DECIMAL(19,2)" />
+      <column name="importe_dietas" type="DECIMAL(19,2)" />
+      <column name="estado" type="VARCHAR(255)" />
+    </createTable>
+
+    <sql dbms="oracle,sqlserver"> ALTER TABLE dato_economico ADD CONSTRAINT ck_proyecto_o_invencion
+      CHECK (proyecto_id IS NOT NULL OR invencion_id IS NOT NULL) </sql>
+  </changeSet>
+
+  <changeSet author="user (generated)" id="00.01.00-10">
+    <createSequence incrementBy="1" sequenceName="dato_economico_documento_seq" startValue="1" />
+    <createTable tableName="dato_economico_documento">
+      <column name="id" type="VARCHAR(255)">
+        <constraints primaryKey="true" nullable="false" />
+      </column>
+
+      <column name="dato_economico_id" type="VARCHAR(255)">
+        <constraints nullable="false" foreignKeyName="FK_DOCUMENTO_DATOECONOMICO"
+          referencedTableName="dato_economico"
+          referencedColumnNames="id" />
+      </column>
+
+      <column name="nombre" type="VARCHAR(255)">
+        <constraints nullable="false" />
+      </column>
+
+      <column name="nombre_fichero" type="VARCHAR(255)">
+        <constraints nullable="false" />
+      </column>
+    </createTable>
+  </changeSet>
+
+  <changeSet author="user (generated)" id="00.01.00-11" dbms="!postgresql,!h2">
+    <addColumn tableName="dato_economico_documento">
+      <column name="contenido" type="BLOB" />
+    </addColumn>
+  </changeSet>
+
+  <changeSet author="user (generated)" id="00.01.00-11" dbms="postgresql,h2">
+    <addColumn tableName="dato_economico_documento">
+      <column name="contenido" type="BYTEA" />
+    </addColumn>
+  </changeSet>
+
+  <changeSet context="dev" author="user (generated)" id="00.01.00-12">
+    <createSequence incrementBy="1" sequenceName="calendario_facturacion_seq" startValue="1" />
+    <createTable tableName="calendario_facturacion">
+      <column name="id" type="BIGINT" autoIncrement="true">
+        <constraints nullable="false" primaryKey="true"
+          primaryKeyName="calendario_facturacionPK" />
+      </column>
+      <column name="proyecto_sge_id" type="VARCHAR(255)" />
+      <column name="proyecto_id_sgi" type="BIGINT">
+        <constraints nullable="false" />
+      </column>
+      <column name="numero_prevision" type="VARCHAR(255)">
+        <constraints nullable="false" />
+      </column>
+      <column name="fecha_emision" type="TIMESTAMP">
+        <constraints nullable="false" />
+      </column>
+      <column name="importe_base" type="DECIMAL(19,2)">
+        <constraints nullable="false" />
+      </column>
+      <column name="porcentaje_iva" type="DECIMAL(5, 2)">
+        <constraints nullable="false" />
+      </column>
+      <column name="comentario" type="VARCHAR(255)" />
+      <column name="tipo_facturacion" type="VARCHAR(255)" />
+      <column name="numero_factura" type="VARCHAR(255)" />
+    </createTable>
+  </changeSet>
+</databaseChangeLog>

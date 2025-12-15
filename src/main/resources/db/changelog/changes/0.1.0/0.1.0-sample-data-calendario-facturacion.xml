@@ -1,0 +1,168 @@
+<?xml version="1.1" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+  xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+  xmlns:pro="http://www.liquibase.org/xml/ns/pro"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd
+                      http://www.liquibase.org/xml/ns/pro http://www.liquibase.org/xml/ns/pro/liquibase-pro-3.8.xsd
+                      http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.8.xsd">
+
+  <changeSet context="dev" author="master" id="00.01.00-calendario-facturacion-1">
+    <insert tableName="calendario_facturacion">
+      <column name="proyecto_sge_id" value="11345" />
+      <column name="proyecto_id_sgi" value="1" />
+      <column name="numero_prevision" value="1" />
+      <column name="fecha_emision" valueDate="2021-09-25T23:00:00" />
+      <column name="importe_base" valueNumeric="230.00" />
+      <column name="porcentaje_iva" valueNumeric="21" />
+      <column name="comentario" value="Proyecto Facturación 1" />
+      <column name="tipo_facturacion" value="Informe" />
+      <column name="numero_factura" value="1NF" />
+    </insert>
+  </changeSet>
+
+  <changeSet context="dev" author="master" id="00.01.00-calendario-facturacion-procedure"
+    dbms="oracle">
+    <sql splitStatements="false" stripComments="false">
+        <![CDATA[
+          CREATE OR REPLACE PROCEDURE ${schemaPrefix}mock_insert_calendario_facturacion(
+          p_proyecto_sge_id  IN NUMBER,
+          p_proyecto_id_sgi  IN NUMBER,
+          p_numero_prevision IN NUMBER
+      ) IS
+          v_id NUMBER;
+          v_fecha_emision TIMESTAMP;
+          v_importe_base NUMBER;
+          v_porcentaje_iva NUMBER := 21;
+          v_comentario VARCHAR(200);
+          v_tipo_facturacion VARCHAR(50);
+          v_numero_factura VARCHAR(20);
+      BEGIN
+          -- Obtener siguiente ID
+          v_id := calendario_facturacion_seq.NEXTVAL;
+
+          -- Fecha de emisión por defecto
+          v_fecha_emision := SYSTIMESTAMP;
+
+          -- Importes aleatorios
+          v_importe_base := ROUND(DBMS_RANDOM.VALUE(100, 5000), 2);
+
+          -- Comentario
+          v_comentario := 'Proyecto Facturación ' || p_numero_prevision;
+
+          -- Tipo de facturación aleatorio
+          v_tipo_facturacion := CASE TRUNC(DBMS_RANDOM.VALUE(1, 4))
+                                    WHEN 1 THEN 'Informe'
+                                    WHEN 2 THEN 'Resumen'
+                                    WHEN 3 THEN 'Detalle'
+                                END;
+
+          -- Número de factura generado automáticamente
+          v_numero_factura := v_id || 'NF';
+
+          INSERT INTO ${schemaPrefix}calendario_facturacion (
+              id,
+              proyecto_sge_id,
+              proyecto_id_sgi,
+              numero_prevision,
+              fecha_emision,
+              importe_base,
+              porcentaje_iva,
+              comentario,
+              tipo_facturacion,
+              numero_factura
+          ) VALUES (
+              v_id,
+              p_proyecto_sge_id,
+              p_proyecto_id_sgi,
+              p_numero_prevision,
+              v_fecha_emision,
+              v_importe_base,
+              v_porcentaje_iva,
+              v_comentario,
+              v_tipo_facturacion,
+              v_numero_factura
+          );
+          
+          COMMIT;
+          END mock_insert_calendario_facturacion;
+        ]]>
+    </sql>
+  </changeSet>
+
+  <changeSet context="dev" author="master" id="00.01.00-calendario-facturacion-procedure" dbms="mssql">
+    <sql splitStatements="false" stripComments="false">
+        <![CDATA[
+        CREATE OR ALTER PROCEDURE ${schemaPrefix}mock_insert_calendario_facturacion
+            @p_proyecto_sge_id  INT,
+            @p_proyecto_id_sgi  INT,
+            @p_numero_prevision INT
+        AS
+        BEGIN
+            SET NOCOUNT ON;
+
+            DECLARE 
+                @v_id BIGINT,
+                @v_fecha_emision DATETIME2,
+                @v_importe_base DECIMAL(18, 2),
+                @v_porcentaje_iva INT = 21,
+                @v_comentario VARCHAR(200),
+                @v_tipo_facturacion VARCHAR(50),
+                @v_numero_factura VARCHAR(20),
+                @v_rand INT;
+
+            --------------------------------------------
+            -- Obtener siguiente ID (secuencia mssql)
+            --------------------------------------------
+            SET @v_id = NEXT VALUE FOR calendario_facturacion_seq;
+
+            SET @v_fecha_emision = SYSDATETIME();
+
+            --------------------------------------------
+            -- Importe base aleatorio entre 100 y 5000
+            --------------------------------------------
+            SET @v_importe_base = ROUND((RAND() * (5000 - 100) + 100), 2);
+
+            SET @v_comentario = CONCAT('Proyecto Facturación ', @p_numero_prevision);
+
+            --------------------------------------------
+            -- Tipo de facturación aleatorio: Informe / Resumen / Detalle
+            --------------------------------------------
+            SET @v_rand = FLOOR(RAND() * 3) + 1;
+
+            SET @v_tipo_facturacion = 
+                CASE @v_rand
+                    WHEN 1 THEN 'Informe'
+                    WHEN 2 THEN 'Resumen'
+                    WHEN 3 THEN 'Detalle'
+                END;
+
+            SET @v_numero_factura = CONCAT(@v_id, 'NF');
+
+            INSERT INTO ${schemaPrefix}calendario_facturacion (
+                proyecto_sge_id,
+                proyecto_id_sgi,
+                numero_prevision,
+                fecha_emision,
+                importe_base,
+                porcentaje_iva,
+                comentario,
+                tipo_facturacion,
+                numero_factura
+            ) VALUES (
+                @p_proyecto_sge_id,
+                @p_proyecto_id_sgi,
+                @p_numero_prevision,
+                @v_fecha_emision,
+                @v_importe_base,
+                @v_porcentaje_iva,
+                @v_comentario,
+                @v_tipo_facturacion,
+                @v_numero_factura
+            );
+        END;
+        ]]>
+    </sql>
+  </changeSet>
+
+</databaseChangeLog>

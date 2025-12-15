@@ -1,0 +1,546 @@
+<?xml version="1.1" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+  xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+  xmlns:pro="http://www.liquibase.org/xml/ns/pro"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd
+                      http://www.liquibase.org/xml/ns/pro http://www.liquibase.org/xml/ns/pro/liquibase-pro-3.8.xsd
+                      http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.8.xsd">
+
+  <changeSet context="dev" author="master" id="00.01.00-codigo-economico-ingreso">
+    <insert tableName="codigo_economico_gasto">
+      <column name="id" value="IB" />
+      <column name="nombre" value="INFRAESTRUCTURA Y BIENES DESTINADOS AL USO GENERAL" />
+    </insert>
+    <insert tableName="codigo_economico_gasto">
+      <column name="id" value="AI" />
+      <column name="nombre" value="APLICACIONES INFORMATICAS" />
+    </insert>
+    <insert tableName="codigo_economico_gasto">
+      <column name="id" value="TR" />
+      <column name="nombre" value="TERRENOS Y BIENES NATURALES" />
+    </insert>
+    <insert tableName="codigo_economico_gasto">
+      <column name="id" value="CT" />
+      <column name="nombre" value="CONSTRUCCIONES" />
+    </insert>
+    <insert tableName="codigo_economico_gasto">
+      <column name="id" value="IT" />
+      <column name="nombre" value="INSTALACIONES TECNICAS" />
+    </insert>
+    <insert tableName="codigo_economico_gasto">
+      <column name="id" value="MA" />
+      <column name="nombre" value="MAQUINARIA" />
+    </insert>
+    <insert tableName="codigo_economico_gasto">
+      <column name="id" value="UT" />
+      <column name="nombre" value="UTILLAJE" />
+    </insert>
+    <insert tableName="codigo_economico_gasto">
+      <column name="id" value="MO" />
+      <column name="nombre" value="MOBILIARIO" />
+    </insert>
+    <insert tableName="codigo_economico_gasto">
+      <column name="id" value="EI" />
+      <column name="nombre" value="EQUIPOS PARA PROCESO DE INFORMACION" />
+    </insert>
+    <insert tableName="codigo_economico_gasto">
+      <column name="id" value="ET" />
+      <column name="nombre" value="ELEMENTOS DE TRANSPORTE" />
+    </insert>
+    <insert tableName="codigo_economico_gasto">
+      <column name="id" value="FB" />
+      <column name="nombre" value="FONDOS BIBLIOGRAFICOS Y DOCUMENTALES" />
+    </insert>
+    <insert tableName="codigo_economico_gasto">
+      <column name="id" value="OI" />
+      <column name="nombre" value="OTRO INMOVILIZADO MATERIAL" />
+    </insert>
+    <insert tableName="codigo_economico_gasto">
+      <column name="id" value="AR" />
+      <column name="nombre" value="ARRENDAMIENTO DE MAQUINARIA" />
+    </insert>
+    <insert tableName="codigo_economico_gasto">
+      <column name="id" value="RC" />
+      <column name="nombre" value="REPARACIONES Y CONSERVACION DE CONSTRUCCIONES" />
+    </insert>
+    <insert tableName="codigo_economico_gasto">
+      <column name="id" value="SP" />
+      <column name="nombre" value="SERVICIOS DE PROFESIONALES INDEPENDIENTES" />
+    </insert>
+    <insert tableName="codigo_economico_gasto">
+      <column name="id" value="TP" />
+      <column name="nombre" value="TRANSPORTES" />
+    </insert>
+    <insert tableName="codigo_economico_gasto">
+      <column name="id" value="PS" />
+      <column name="nombre" value="PRIMAS DE SEGUROS DE VEHICULOS" />
+    </insert>
+    <insert tableName="codigo_economico_gasto">
+      <column name="id" value="SB" />
+      <column name="nombre" value="SERVICIOS BANCARIOS Y SIMILARES" />
+    </insert>
+    <insert tableName="codigo_economico_gasto">
+      <column name="id" value="PP" />
+      <column name="nombre" value="PUBLICIDAD, PROPAGANDA Y RELACIONES PUBLICAS" />
+    </insert>
+    <insert tableName="codigo_economico_gasto">
+      <column name="id" value="SM" />
+      <column name="nombre" value="SUMINISTROS DE ENERGIA ELECTRICA" />
+    </insert>
+    <insert tableName="codigo_economico_gasto">
+      <column name="id" value="CO" />
+      <column name="nombre" value="COMUNICACIONES Y OTROS SERVICIOS" />
+    </insert>
+    <insert tableName="codigo_economico_gasto">
+      <column name="id" value="TL" />
+      <column name="nombre" value="TRIBUTOS LOCALES" />
+    </insert>
+    <insert tableName="codigo_economico_gasto">
+      <column name="id" value="TA" />
+      <column name="nombre" value="TRIBUTOS AUTONOMICOS" />
+    </insert>
+    <insert tableName="codigo_economico_gasto">
+      <column name="id" value="TE" />
+      <column name="nombre" value="TRIBUTOS ESTATALES" />
+    </insert>
+    <insert tableName="codigo_economico_gasto">
+      <column name="id" value="SS" />
+      <column name="nombre" value="SUELDOS Y SALARIOS" />
+    </insert>
+    <insert tableName="codigo_economico_gasto">
+      <column name="id" value="IN" />
+      <column name="nombre" value="INDEMNIZACIONES" />
+    </insert>
+    <insert tableName="codigo_economico_gasto">
+      <column name="id" value="CS" />
+      <column name="nombre" value="COTIZACIONES SOCIALES" />
+    </insert>
+    <insert tableName="codigo_economico_gasto">
+      <column name="id" value="GS" />
+      <column name="nombre" value="OTROS GASTOS SOCIALES" />
+    </insert>
+    <insert tableName="codigo_economico_gasto">
+      <column name="id" value="SU" />
+      <column name="nombre" value="SUBVENCIONES CORRIENTES - OTROS BECARIOS" />
+    </insert>
+    <insert tableName="codigo_economico_gasto">
+      <column name="id" value="SC" />
+      <column name="nombre" value="SUBVENCIONES DE CAPITAL" />
+    </insert>
+    <insert tableName="codigo_economico_gasto">
+      <column name="id" value="ID" />
+      <column name="nombre" value="INTERESES DE DEMORA" />
+    </insert>
+    <insert tableName="codigo_economico_gasto">
+      <column name="id" value="PR" />
+      <column name="nombre" value="GASTOS PROTOCOLARIOS" />
+    </insert>
+    <insert tableName="codigo_economico_gasto">
+      <column name="id" value="OF" />
+      <column name="nombre" value="MATERIAL DE OFICINA ORDINARIO NO INVENTARIABLE" />
+    </insert>
+    <insert tableName="codigo_economico_gasto">
+      <column name="id" value="PM" />
+      <column name="nombre" value="PREMIOS" />
+    </insert>
+    <insert tableName="codigo_economico_gasto">
+      <column name="id" value="RE" />
+      <column name="nombre" value="REUNIONES Y CONFERENCIAS" />
+    </insert>
+    <insert tableName="codigo_economico_gasto">
+      <column name="id" value="MI" />
+      <column name="nombre" value="MATERIAL INFORMATICO NO INVENTARIABLE" />
+    </insert>
+    <insert tableName="codigo_economico_gasto">
+      <column name="id" value="CU" />
+      <column name="nombre" value="CURSOS, CONFERENCIAS Y SEMINARIOS" />
+    </insert>
+    <insert tableName="codigo_economico_gasto">
+      <column name="id" value="FA" />
+      <column name="nombre" value="FONDO ARTÍSTICO Y CULTURAL" />
+    </insert>
+    <insert tableName="codigo_economico_gasto">
+      <column name="id" value="AM" />
+      <column name="nombre" value="AMORTIZACION DE LA DEUDA" />
+    </insert>
+    <insert tableName="codigo_economico_gasto">
+      <column name="id" value="IL" />
+      <column name="nombre" value="INTERESES DE DEUDAS A LARGO PLAZO" />
+    </insert>
+    <insert tableName="codigo_economico_gasto">
+      <column name="id" value="IF" />
+      <column name="nombre" value="INVERSIONES FINANCIERAS PERMANENTES EN CAPITAL" />
+    </insert>
+    <insert tableName="codigo_economico_gasto">
+      <column name="id" value="AN" />
+      <column name="nombre" value="ANIMALES PARA EXPERIMENTACION" />
+    </insert>
+    <insert tableName="codigo_economico_gasto">
+      <column name="id" value="IC" />
+      <column name="nombre" value="INTERESES DE DEUDAS A CORTO PLAZO" />
+    </insert>
+    <insert tableName="codigo_economico_gasto">
+      <column name="id" value="RN" />
+      <column name="nombre" value="ANTICIPOS REINTEGRABLES" />
+    </insert>
+    <insert tableName="codigo_economico_gasto">
+      <column name="id" value="RV" />
+      <column name="nombre" value="FONDOS BIBLIOGRAFICOS. REVISTAS" />
+    </insert>
+    <insert tableName="codigo_economico_gasto">
+      <column name="id" value="RM" />
+      <column name="nombre" value="REFORMAS Y MODIFICACIONES MENORES" />
+    </insert>
+    <insert tableName="codigo_economico_gasto">
+      <column name="id" value="PL" />
+      <column name="nombre" value="PROPIEDAD INTELECTUAL" />
+    </insert>
+    <insert tableName="codigo_economico_gasto">
+      <column name="id" value="PI" />
+      <column name="nombre" value="PROPIEDAD INDUSTRIAL" />
+    </insert>
+    <insert tableName="codigo_economico_gasto">
+      <column name="id" value="AP" />
+      <column name="nombre" value="APARCAMIENTOS Y OBRAS EN TERRENOS" />
+    </insert>
+    <insert tableName="codigo_economico_gasto">
+      <column name="id" value="CC" />
+      <column name="nombre" value="CONSTRUCCIONES EN CURSO" />
+    </insert>
+    <insert tableName="codigo_economico_gasto">
+      <column name="id" value="SJ" />
+      <column name="nombre" value="OTROS SERVICIOS PENDIENTES DE JUSTIFICAR" />
+    </insert>
+    <insert tableName="codigo_economico_gasto">
+      <column name="id" value="AC" />
+      <column name="nombre" value="AMORTIZACION PRESTAMOS SECTOR ADMON. ESTATAL" />
+    </insert>
+    <insert tableName="codigo_economico_gasto">
+      <column name="id" value="EN" />
+      <column name="nombre" value="ENSAYOS CLÍNICOS" />
+    </insert>
+    <insert tableName="codigo_economico_gasto">
+      <column name="id" value="AA" />
+      <column name="nombre" value="AMORTIZACION PRESTAMOS SECTOR ADMON. AUTONOMICA" />
+    </insert>
+    <insert tableName="codigo_economico_gasto">
+      <column name="id" value="RP" />
+      <column name="nombre" value="ANTICIPOS Y PRESTAMOS" />
+    </insert>
+    <insert tableName="codigo_economico_gasto">
+      <column name="id" value="SA" />
+      <column name="nombre" value="SANCIONES" />
+    </insert>
+    <insert tableName="codigo_economico_gasto">
+      <column name="id" value="BB" />
+      <column name="nombre" value="SUBVENCIONES CORRIENTES - BECARIOS" />
+    </insert>
+    <insert tableName="codigo_economico_gasto">
+      <column name="id" value="LE" />
+      <column name="nombre" value="FONDOS BIBLIOGRAFICOS ELECTRONICOS" />
+    </insert>
+    <insert tableName="codigo_economico_gasto">
+      <column name="id" value="RI" />
+      <column name="nombre" value="REPAR. Y CONSERV. DE INSTALACIONES TÉCNICAS" />
+    </insert>
+    <insert tableName="codigo_economico_gasto">
+      <column name="id" value="LP" />
+      <column name="nombre" value="PRENSA, REVISTAS, LIBROS Y OTRAS PUBLICACIONES" />
+    </insert>
+    <insert tableName="codigo_economico_gasto">
+      <column name="id" value="OM" />
+      <column name="nombre" value="OTRO MATERIAL" />
+    </insert>
+    <insert tableName="codigo_economico_gasto">
+      <column name="id" value="MR" />
+      <column name="nombre" value="MATERIAL DE REPROGRAFÍA" />
+    </insert>
+    <insert tableName="codigo_economico_gasto">
+      <column name="id" value="IO" />
+      <column name="nombre" value="OTRAS INDEMNIZACIONES" />
+    </insert>
+    <insert tableName="codigo_economico_gasto">
+      <column name="id" value="AV" />
+      <column name="nombre" value="GASTOS FINANCIEROS DE AVALES" />
+    </insert>
+    <insert tableName="codigo_economico_gasto">
+      <column name="id" value="AB" />
+      <column name="nombre" value="ARRENDAMIENTO DE MOBILIARIO" />
+    </insert>
+    <insert tableName="codigo_economico_gasto">
+      <column name="id" value="AQ" />
+      <column name="nombre" value="ARRENDAMIENTO DE EQUIPOS PARA PROCESOS DE INFORM." />
+    </insert>
+    <insert tableName="codigo_economico_gasto">
+      <column name="id" value="MD" />
+      <column name="nombre" value="MATERIAL DOCENTE" />
+    </insert>
+    <insert tableName="codigo_economico_gasto">
+      <column name="id" value="MC" />
+      <column name="nombre" value="MATERIAL DEPORTIVO, DIDÁCTICO Y CULTURAL" />
+    </insert>
+    <insert tableName="codigo_economico_gasto">
+      <column name="id" value="PO" />
+      <column name="nombre" value="COMUNICACIONES POSTALES" />
+    </insert>
+    <insert tableName="codigo_economico_gasto">
+      <column name="id" value="FP" />
+      <column name="nombre" value="OTROS GASTOS FINANCIEROS DE PRÉSTAMOS" />
+    </insert>
+    <insert tableName="codigo_economico_gasto">
+      <column name="id" value="RQ" />
+      <column name="nombre" value="REPAR. Y CONSERV. DE MAQUINARIA" />
+    </insert>
+    <insert tableName="codigo_economico_gasto">
+      <column name="id" value="RT" />
+      <column name="nombre" value="REPAR. Y CONSERV. DE ELEMENTOS DE TRANSPORTE" />
+    </insert>
+    <insert tableName="codigo_economico_gasto">
+      <column name="id" value="RF" />
+      <column name="nombre" value="REPAR. Y CONSERV. DE EQUIPOS PARA PROCESOS INFORM." />
+    </insert>
+    <insert tableName="codigo_economico_gasto">
+      <column name="id" value="CM" />
+      <column name="nombre" value="SUMINISTRO DE  COMBUSTIBLE" />
+    </insert>
+    <insert tableName="codigo_economico_gasto">
+      <column name="id" value="DA" />
+      <column name="nombre" value="COMUNICACIONES DE VOZ Y DATOS" />
+    </insert>
+    <insert tableName="codigo_economico_gasto">
+      <column name="id" value="OP" />
+      <column name="nombre" value="OTROS RIESGOS" />
+    </insert>
+    <insert tableName="codigo_economico_gasto">
+      <column name="id" value="LO" />
+      <column name="nombre" value="LOCOMOCIÓN" />
+    </insert>
+    <insert tableName="codigo_economico_gasto">
+      <column name="id" value="GM" />
+      <column name="nombre" value="GTOS.EMISIÓN, MODIF. Y CANCELAC. PRÉSTAMO" />
+    </insert>
+    <insert tableName="codigo_economico_gasto">
+      <column name="id" value="CA" />
+      <column name="nombre" value="CÁNONES" />
+    </insert>
+    <insert tableName="codigo_economico_gasto">
+      <column name="id" value="GA" />
+      <column name="nombre" value="SUMINISTRO DE GAS" />
+    </insert>
+    <insert tableName="codigo_economico_gasto">
+      <column name="id" value="VE" />
+      <column name="nombre" value="VESTUARIO" />
+    </insert>
+    <insert tableName="codigo_economico_gasto">
+      <column name="id" value="AE" />
+      <column name="nombre" value="ARRENDAMIENTO DE CONSTRUCCIONES" />
+    </insert>
+    <insert tableName="codigo_economico_gasto">
+      <column name="id" value="AS" />
+      <column name="nombre" value="ARRENDAMIENTO DE INSTALACIONES" />
+    </insert>
+    <insert tableName="codigo_economico_gasto">
+      <column name="id" value="RU" />
+      <column name="nombre" value="REPAR. Y CONSERV. DE UTILLAJE" />
+    </insert>
+    <insert tableName="codigo_economico_gasto">
+      <column name="id" value="PF" />
+      <column name="nombre" value="PRODUCTOS FARMACÉUTICOS Y MAT.SANITARIO" />
+    </insert>
+    <insert tableName="codigo_economico_gasto">
+      <column name="id" value="ML" />
+      <column name="nombre" value="MATERIAL E INSTRUM. DE LABORATORIO Y EXPERIMENTACIÓN" />
+    </insert>
+    <insert tableName="codigo_economico_gasto">
+      <column name="id" value="LI" />
+      <column name="nombre" value="LIMPIEZA Y ASEO" />
+    </insert>
+    <insert tableName="codigo_economico_gasto">
+      <column name="id" value="DI" />
+      <column name="nombre" value="DIETAS" />
+    </insert>
+    <insert tableName="codigo_economico_gasto">
+      <column name="id" value="AU" />
+      <column name="nombre" value="ARRENDAMIENTO DE UTILLAJE" />
+    </insert>
+    <insert tableName="codigo_economico_gasto">
+      <column name="id" value="SR" />
+      <column name="nombre" value="REPUESTOS DE MAQUINARIA, UTILLAJE Y ELEM.TRANSPORTE" />
+    </insert>
+    <insert tableName="codigo_economico_gasto">
+      <column name="id" value="SE" />
+      <column name="nombre" value="REPUESTOS DE MAT.ELECTRÓNICO, ELÉCTRICO Y DE COMUNIC." />
+    </insert>
+    <insert tableName="codigo_economico_gasto">
+      <column name="id" value="OT" />
+      <column name="nombre" value="OTROS TRANSPORTES" />
+    </insert>
+    <insert tableName="codigo_economico_gasto">
+      <column name="id" value="PE" />
+      <column name="nombre" value="PRIMAS DE SEGURO DE MOBILIARIO Y ENSERES" />
+    </insert>
+    <insert tableName="codigo_economico_gasto">
+      <column name="id" value="SG" />
+      <column name="nombre" value="SEGURIDAD" />
+    </insert>
+    <insert tableName="codigo_economico_gasto">
+      <column name="id" value="AL" />
+      <column name="nombre" value="ARRENDAMIENTO DE ELEMENTOS DE TRANSPORTE" />
+    </insert>
+    <insert tableName="codigo_economico_gasto">
+      <column name="id" value="RS" />
+      <column name="nombre" value="REPAR. Y CONSERV. DE MOBILIARIO" />
+    </insert>
+    <insert tableName="codigo_economico_gasto">
+      <column name="id" value="RO" />
+      <column name="nombre" value="REPAR. Y CONSERV. DE OTRO INMOVILIZADO MATERIAL" />
+    </insert>
+    <insert tableName="codigo_economico_gasto">
+      <column name="id" value="CF" />
+      <column name="nombre" value="COSTE DE FOTOCOPIAS" />
+    </insert>
+    <insert tableName="codigo_economico_gasto">
+      <column name="id" value="PA" />
+      <column name="nombre" value="PRODUCTOS ALIMENTICIOS" />
+    </insert>
+    <insert tableName="codigo_economico_gasto">
+      <column name="id" value="SO" />
+      <column name="nombre" value="OTROS SUMINISTROS" />
+    </insert>
+    <insert tableName="codigo_economico_gasto">
+      <column name="id" value="OS" />
+      <column name="nombre" value="OTROS SERVICIOS" />
+    </insert>
+    <insert tableName="codigo_economico_gasto">
+      <column name="id" value="OO" />
+      <column name="nombre" value="OTROS GASTOS FINANCIEROS" />
+    </insert>
+    <insert tableName="codigo_economico_gasto">
+      <column name="id" value="AT" />
+      <column name="nombre" value="ARRENDAMIENO DE TERRENOS Y BIENES NATURALES" />
+    </insert>
+    <insert tableName="codigo_economico_gasto">
+      <column name="id" value="AO" />
+      <column name="nombre" value="ARRENDAMIENTO DE OTRO INMOVILIZADO MATERIAL" />
+    </insert>
+    <insert tableName="codigo_economico_gasto">
+      <column name="id" value="RB" />
+      <column name="nombre" value="REPAR. Y CONSERV. DE TERRENOS Y BIENES NATURALES" />
+    </insert>
+    <insert tableName="codigo_economico_gasto">
+      <column name="id" value="AG" />
+      <column name="nombre" value="SUMINISTRO DE  AGUA" />
+    </insert>
+    <insert tableName="codigo_economico_gasto">
+      <column name="id" value="OC" />
+      <column name="nombre" value="OTRAS COMUNICACIONES" />
+    </insert>
+    <insert tableName="codigo_economico_gasto">
+      <column name="id" value="MU" />
+      <column name="nombre" value="MUDANZAS" />
+    </insert>
+    <insert tableName="codigo_economico_gasto">
+      <column name="id" value="PC" />
+      <column name="nombre" value="PRIMAS DE SEGURO DE EDIFICIOS Y OTRAS CONSTRUCC." />
+    </insert>
+    <insert tableName="codigo_economico_gasto">
+      <column name="id" value="DS" />
+      <column name="nombre" value="PROCESOS DE DATOS" />
+    </insert>
+    <insert tableName="codigo_economico_gasto">
+      <column name="id" value="TF" />
+      <column name="nombre" value="COMUNICACIONES TELEFÓNICAS" />
+    </insert>
+    <insert tableName="codigo_economico_gasto">
+      <column name="id" value="CI" />
+      <column name="nombre" value="COMUNICACIONES INFORMATICAS" />
+    </insert>
+    <insert tableName="codigo_economico_gasto">
+      <column name="id" value="GE" />
+      <column name="nombre" value="GASTOS EXTRAORDINARIOS" />
+    </insert>
+    <insert tableName="codigo_economico_gasto">
+      <column name="id" value="LM" />
+      <column name="nombre" value="FONDOS BIBLIOGRAFICOS. FONDOS PARA MULTIDISPOSITIVO" />
+    </insert>
+    <insert tableName="codigo_economico_gasto">
+      <column name="id" value="LA" />
+      <column name="nombre"
+        value="ADQUISICIÓN LIBROS ELECTRÓNICOS POR PERIODO INFERIOR O IGUAL A 1 AÑO" />
+    </insert>
+    <insert tableName="codigo_economico_gasto">
+      <column name="id" value="GL" />
+      <column name="nombre" value="SUMINISTRO DE GASES DE LABORATORIO" />
+    </insert>
+    <insert tableName="codigo_economico_gasto">
+      <column name="id" value="DH" />
+      <column name="nombre" value="GASTOS POR DERECHOS DE AUTOR" />
+    </insert>
+    <insert tableName="codigo_economico_gasto">
+      <column name="id" value="GI" />
+      <column name="nombre" value="GASTOS EXTRAORDINARIOS. INDEMNIZACIONES" />
+    </insert>
+    <insert tableName="codigo_economico_gasto">
+      <column name="id" value="OE" />
+      <column name="nombre" value="INVERSIONES GESTIONADAS PARA OTROS ENTES" />
+    </insert>
+    <insert tableName="codigo_economico_gasto">
+      <column name="id" value="TM" />
+      <column name="nombre" value="ADAPTACIÓN DE TERRENOS Y BIENES NATURALES INMOV. MATERIAL" />
+    </insert>
+    <insert tableName="codigo_economico_gasto">
+      <column name="id" value="IM" />
+      <column name="nombre" value="INSTALACIONES TÉCNICAS Y OTRAS INSTALACIONES EN MONTAJE" />
+    </insert>
+    <insert tableName="codigo_economico_gasto">
+      <column name="id" value="BA" />
+      <column name="nombre" value="ACTIVOS ADQUIRIDOS PARA OTRAS ENTIDADES" />
+    </insert>
+    <insert tableName="codigo_economico_gasto">
+      <column name="id" value="IS" />
+      <column name="nombre" value="INTERESES DE OTRAS DEUDAS" />
+    </insert>
+    <insert tableName="codigo_economico_gasto">
+      <column name="id" value="IE" />
+      <column name="nombre" value="INTERESES DE DEUDAS CON ENTIDADES DE CRÉDITO" />
+    </insert>
+    <insert tableName="codigo_economico_gasto">
+      <column name="id" value="RR" />
+      <column name="nombre" value="OTROS CRÉDITOS A CORTO PLAZO" />
+    </insert>
+    <insert tableName="codigo_economico_gasto">
+      <column name="id" value="RX" />
+      <column name="nombre" value="CRÉDITOS LP EGMA" />
+    </insert>
+    <insert tableName="codigo_economico_gasto">
+      <column name="id" value="AZ" />
+      <column name="nombre" value="CUOTAS ASOCIACIONES" />
+    </insert>
+    <insert tableName="codigo_economico_gasto">
+      <column name="id" value="GP" />
+      <column name="nombre" value="GASTOS DE PUBLICACIONES" />
+    </insert>
+    <insert tableName="codigo_economico_gasto">
+      <column name="id" value="JS" />
+      <column name="nombre" value="SERVICIOS JURIDICOS" />
+    </insert>
+    <insert tableName="codigo_economico_gasto">
+      <column name="id" value="OX" />
+      <column name="nombre" value="OTRO INMOVILIZADO MATERIAL EN CURSO" />
+    </insert>
+    <insert tableName="codigo_economico_gasto">
+      <column name="id" value="MK" />
+      <column name="nombre" value="MARCAS" />
+    </insert>
+    <insert tableName="codigo_economico_gasto">
+      <column name="id" value="IV" />
+      <column name="nombre" value="INVERSION EN DESARROLLO" />
+    </insert>
+    <insert tableName="codigo_economico_gasto">
+      <column name="id" value="AF" />
+      <column name="nombre" value="AMORTIZACION ANTICIPOS REEMBOLSABLES FEDER" />
+    </insert>
+  </changeSet>
+
+</databaseChangeLog>

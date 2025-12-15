@@ -1,0 +1,44 @@
+<?xml version="1.1" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+  xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+  xmlns:pro="http://www.liquibase.org/xml/ns/pro"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd
+                      http://www.liquibase.org/xml/ns/pro http://www.liquibase.org/xml/ns/pro/liquibase-pro-3.8.xsd
+                      http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.8.xsd">
+
+
+  <changeSet context="dev" author="master" id="00.01.00-codigo-economico-ingreso">
+    <insert tableName="codigo_economico_ingreso">
+      <column name="id" value="7R" />
+      <column name="nombre"
+        value="SUBVENCIONES PARA GASTOS NO FINANCIEROS DEL EJERCICIO. DEL RESTO DE ENTIDADES" />
+    </insert>
+    <insert tableName="codigo_economico_ingreso">
+      <column name="id" value="7C" />
+      <column name="nombre"
+        value="SUBVENCIONES PARA GASTOS NO FINANCIEROS DEL EJERCICIO. DE LA ENTIDAD PROPIETARIA" />
+    </insert>
+    <insert tableName="codigo_economico_ingreso">
+      <column name="id" value="9R" />
+      <column name="nombre"
+        value="INGRESOS DE SUBVENCIONES PARA LA FINANCIACIÓN DE ACTIVOS CORRIENTES Y GASTOS. DEL RESTO DE ENTIDADES" />
+    </insert>
+    <insert tableName="codigo_economico_ingreso">
+      <column name="id" value="9C" />
+      <column name="nombre"
+        value="INGRESOS DE SUBVENCIONES PARA LA FINANCIACIÓN DE ACTIVOS CORRIENTES Y GASTOS. DE LA ENTIDAD PROPIETARIA" />
+    </insert>
+    <insert tableName="codigo_economico_ingreso">
+      <column name="id" value="IR" />
+      <column name="nombre"
+        value="INGRESOS DE SUBVENCIONES PARA LA FINANCIACIÓN DEL INMOVILIZADO NO FINANCIERO Y DE ACTIVOS EN ESTADO DE VENTA. DEL RESTO DE ENTIDADES" />
+    </insert>
+    <insert tableName="codigo_economico_ingreso">
+      <column name="id" value="IC" />
+      <column name="nombre"
+        value="INGRESOS DE SUBVENCIONES PARA LA FINANCIACIÓN DEL INMOVILIZADO NO FINANCIERO Y DE ACTIVOS EN ESTADO DE VENTA. DE LA ENTIDAD PROPIETARIA" />
+    </insert>
+  </changeSet>
+
+</databaseChangeLog>

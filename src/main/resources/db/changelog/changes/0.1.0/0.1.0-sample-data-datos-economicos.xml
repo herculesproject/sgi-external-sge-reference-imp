@@ -1,0 +1,904 @@
+<?xml version="1.1" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+  xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+  xmlns:pro="http://www.liquibase.org/xml/ns/pro"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd
+                      http://www.liquibase.org/xml/ns/pro http://www.liquibase.org/xml/ns/pro/liquibase-pro-3.8.xsd
+                      http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.8.xsd">
+
+  <!-- Datos iniciales para EPA -->
+  <changeSet context="dev" author="master" id="00.01.00-dato-economico-1">
+    <insert tableName="dato_economico">
+      <column name="id" valueSequenceNext="dato_economico_seq" />
+      <column name="proyecto_id" value="34123" />
+      <column name="anualidad" value="2023" />
+      <column name="tipo_dato_economico" value="Gasto" />
+      <column name="tipo_operacion" value="EPA" />
+      <column name="aplicacion_presupuestaria" value="AP-01" />
+      <column name="importe_inicial" valueNumeric="100000.00" />
+      <column name="importe_definitivo" valueNumeric="95000.00" />
+      <column name="importe_disponible" valueNumeric="5000.00" />
+      <column name="derechos" valueNumeric="80000.00" />
+      <column name="cobros" valueNumeric="75000.00" />
+    </insert>
+
+    <insert tableName="dato_economico">
+      <column name="id" valueSequenceNext="dato_economico_seq" />
+      <column name="proyecto_id" value="34123" />
+      <column name="anualidad" value="2023" />
+      <column name="tipo_dato_economico" value="Gasto" />
+      <column name="tipo_operacion" value="EPA" />
+      <column name="aplicacion_presupuestaria" value="AP-02" />
+      <column name="importe_inicial" valueNumeric="22222.22" />
+      <column name="importe_definitivo" valueNumeric="1234.56" />
+      <column name="importe_disponible" valueNumeric="10000.00" />
+      <column name="derechos" valueNumeric="99900.00" />
+      <column name="cobros" valueNumeric="11100.00" />
+    </insert>
+
+    <insert tableName="dato_economico">
+      <column name="id" valueSequenceNext="dato_economico_seq" />
+      <column name="proyecto_id" value="34123" />
+      <column name="anualidad" value="2023" />
+      <column name="tipo_dato_economico" value="Ingreso" />
+      <column name="tipo_operacion" value="EPA" />
+      <column name="aplicacion_presupuestaria" value="AP-01" />
+      <column name="importe_inicial" valueNumeric="8970.00" />
+      <column name="importe_definitivo" valueNumeric="11111.00" />
+      <column name="importe_disponible" valueNumeric="99990.00" />
+      <column name="derechos" valueNumeric="11000.00" />
+      <column name="cobros" valueNumeric="77000.00" />
+    </insert>
+  </changeSet>
+
+  <!-- Datos iniciales para EPG -->
+  <changeSet context="dev" author="master" id="00.01.00-dato-economico-2">
+    <insert tableName="dato_economico">
+      <column name="id" valueSequenceNext="dato_economico_seq" />
+      <column name="proyecto_id" value="34123" />
+      <column name="anualidad" value="2023" />
+      <column name="tipo_dato_economico" value="Gasto" />
+      <column name="tipo_operacion" value="EPG" />
+      <column name="aplicacion_presupuestaria" value="AP-01" />
+      <column name="importe_presupuestado" valueNumeric="50000.00" />
+      <column name="importe_concedido" valueNumeric="48000.00" />
+      <column name="importe_definitivo" valueNumeric="84888.00" />
+      <column name="gastado" valueNumeric="45000.00" />
+      <column name="pagado" valueNumeric="40000.00" />
+      <column name="pendiente_pago" valueNumeric="5000.00" />
+      <column name="reservado" valueNumeric="2000.00" />
+      <column name="disponible" valueNumeric="3000.00" />
+    </insert>
+  </changeSet>
+
+  <!-- Datos iniciales para EPI -->
+  <changeSet context="dev" author="master" id="00.01.00-dato-economico-3">
+    <insert tableName="dato_economico">
+      <column name="id" valueSequenceNext="dato_economico_seq" />
+      <column name="proyecto_id" value="34123" />
+      <column name="anualidad" value="2023" />
+      <column name="tipo_dato_economico" value="Ingreso" />
+      <column name="tipo_operacion" value="EPI" />
+      <column name="aplicacion_presupuestaria" value="AP-01" />
+      <column name="importe_presupuestado" valueNumeric="222222.00" />
+      <column name="importe_definitivo" valueNumeric="11111.00" />
+      <column name="derechos" valueNumeric="11000.00" />
+      <column name="cobros" valueNumeric="77000.00" />
+    </insert>
+  </changeSet>
+
+  <!-- Datos iniciales para DOG -->
+  <changeSet context="dev" author="master" id="00.01.00-dato-economico-4">
+    <insert tableName="dato_economico">
+      <column name="id" valueSequenceNext="dato_economico_seq" />
+      <column name="proyecto_id" value="34123" />
+      <column name="anualidad" value="2023" />
+      <column name="tipo_dato_economico" value="Gasto" />
+      <column name="tipo_operacion" value="DOG" />
+      <column name="aplicacion_presupuestaria" value="AP-01" />
+      <column name="numero_documento" value="23/FDOG" />
+      <column name="fecha" valueDate="2023-10-07T23:00:00" />
+      <column name="descripcion" value="Descripción detalle operación gasto: AP-01" />
+      <column name="gastado_ejecutado" valueNumeric="8765.00" />
+      <column name="gastado_comprometido" valueNumeric="4321.00" />
+      <column name="disponible" valueNumeric="9000.00" />
+    </insert>
+  </changeSet>
+
+  <!-- Datos iniciales para DOI -->
+  <changeSet context="dev" author="master" id="00.01.00-dato-economico-5">
+    <insert tableName="dato_economico">
+      <column name="id" valueSequenceNext="dato_economico_seq" />
+      <column name="proyecto_id" value="34123" />
+      <column name="anualidad" value="2023" />
+      <column name="tipo_dato_economico" value="Ingreso" />
+      <column name="tipo_operacion" value="DOI" />
+      <column name="numero_documento" value="11/FDOI" />
+      <column name="aplicacion_presupuestaria" value="AP-01" />
+      <column name="fecha" valueDate="2023-10-07T23:00:00" />
+      <column name="descripcion" value="Descripción detalle operación ingreso: AP-01" />
+      <column name="tercero" value="PEPE S.L" />
+      <column name="importe_inicial" valueNumeric="9999.00" />
+      <column name="importe_iva" valueNumeric="10999.00" />
+    </insert>
+  </changeSet>
+
+  <!-- Datos iniciales para DOM -->
+  <changeSet context="dev" author="master" id="00.01.00-dato-economico-6">
+    <insert tableName="dato_economico">
+      <column name="id" valueSequenceNext="dato_economico_seq" />
+      <column name="proyecto_id" value="34123" />
+      <column name="anualidad" value="2023" />
+      <column name="tipo_operacion" value="DOM" />
+      <column name="tipo_dato_economico" value="Ingreso" />
+      <column name="aplicacion_presupuestaria" value="AP-01" />
+      <column name="fecha" valueDate="2023-10-07T23:00:00" />
+      <column name="descripcion" value="Descripción detalle operación modificación ingreso: AP-01" />
+      <column name="importe_inicial" valueNumeric="50005.00" />
+    </insert>
+  </changeSet>
+
+  <!-- Datos iniciales para FJF -->
+  <changeSet context="dev" author="master" id="00.01.00-dato-economico-7">
+    <insert tableName="dato_economico">
+      <column name="id" valueSequenceNext="dato_economico_seq" />
+      <column name="proyecto_id" value="34123" />
+      <column name="anualidad" value="2023" />
+      <column name="tipo_operacion" value="FJF" />
+      <column name="aplicacion_presupuestaria" value="AP-01" />
+      <column name="fecha" valueDate="2023-10-07T23:00:00" />
+      <column name="fecha_devengo" valueDate="2024-10-07T23:00:00" />
+      <column name="numero_documento" value="REF/123/FJF" />
+      <column name="descripcion" value="Concepto factura: AP-01" />
+      <column name="importe_inicial" valueNumeric="51234.00" />
+      <column name="importe_iva" valueNumeric="88888.00" />
+      <column name="pagado" valueNumeric="88888.00" />
+      <column name="tercero" value="PEPE S.L" />
+    </insert>
+  </changeSet>
+
+  <!-- Datos iniciales para FJV -->
+  <changeSet context="dev" author="master" id="00.01.00-dato-economico-8">
+    <insert tableName="dato_economico">
+      <column name="id" valueSequenceNext="dato_economico_seq" />
+      <column name="proyecto_id" value="34123" />
+      <column name="anualidad" value="2023" />
+      <column name="tipo_operacion" value="FJV" />
+      <column name="aplicacion_presupuestaria" value="AP-01" />
+      <column name="fecha" valueDate="2023-10-07T23:00:00" />
+      <column name="fecha_salida" valueDate="2023-10-10T23:00:00" />
+      <column name="fecha_vuelta" valueDate="2023-10-12T23:00:00" />
+      <column name="fecha_devengo" valueDate="2024-10-07T23:00:00" />
+      <column name="numero_documento" value="REF/012/FJV" />
+      <column name="numero_comision" value="NCOMISION/012/FJV" />
+      <column name="descripcion" value="Motivo del viaje: AP-01" />
+      <column name="destino" value="Destino: Asturias" />
+      <column name="importe_definitivo" valueNumeric="370.00" />
+      <column name="importe_locomocion" valueNumeric="120.00" />
+      <column name="importe_alojamiento" valueNumeric="200.00" />
+      <column name="importe_dietas" valueNumeric="50.00" />
+      <column name="tercero" value="PEPE S.L" />
+    </insert>
+  </changeSet>
+
+  <!-- Datos iniciales para FJP -->
+  <changeSet context="dev" author="master" id="00.01.00-dato-economico-9">
+    <insert tableName="dato_economico">
+      <column name="id" valueSequenceNext="dato_economico_seq" />
+      <column name="proyecto_id" value="34123" />
+      <column name="anualidad" value="2023" />
+      <column name="tipo_operacion" value="FJP" />
+      <column name="aplicacion_presupuestaria" value="AP-01" />
+      <column name="fecha" valueDate="2023-10-07T23:00:00" />
+      <column name="fecha_devengo" valueDate="2024-10-07T23:00:00" />
+      <column name="numero_documento" value="REF/00/FJP" />
+      <column name="numero_identificacion" value="11111111A" />
+      <column name="descripcion" value="Esto es el concepto: AP-01" />
+      <column name="nombre_completo" value="Prueba Treelogic" />
+      <column name="importe_inicial" valueNumeric="1000.00" />
+    </insert>
+  </changeSet>
+
+  <!-- Datos iniciales para FEM -->
+  <changeSet context="dev" author="master" id="00.01.00-dato-economico-10">
+    <insert tableName="dato_economico">
+      <column name="id" valueSequenceNext="dato_economico_seq" />
+      <column name="proyecto_id" value="34123" />
+      <column name="anualidad" value="2023" />
+      <column name="tipo_operacion" value="FEM" />
+      <column name="aplicacion_presupuestaria" value="AP-01" />
+      <column name="fecha" valueDate="2023-10-07T23:00:00" />
+      <column name="fecha_emision" valueDate="2024-10-07T23:00:00" />
+      <column name="fecha_cobro" valueDate="2024-10-07T23:00:00" />
+      <column name="numero_documento" value="REF/99/FEM" />
+      <column name="numero_prevision" value="4PREV4" />
+      <column name="descripcion" value="Esto es el concepto: AP-01" />
+      <column name="tercero" value="PEPE S.L" />
+      <column name="importe_inicial" valueNumeric="1000.00" />
+      <column name="porcentaje_iva" valueNumeric="21" />
+      <column name="importe_iva" valueNumeric="1210.00" />
+      <column name="importe_definitivo" valueNumeric="2210.00" />
+      <column name="cobros" valueNumeric="2210.00" />
+      <column name="estado" value="Estado" />
+    </insert>
+  </changeSet>
+
+  <!-- Datos iniciales para GAS -->
+  <changeSet context="dev" author="master" id="00.01.00-dato-economico-11">
+    <insert tableName="dato_economico">
+      <column name="id" valueSequenceNext="dato_economico_seq" />
+      <column name="invencion_id" value="113" />
+      <column name="tipo_operacion" value="GAS" />
+      <column name="tipo_dato_economico" value="Gasto" />
+      <column name="fecha" valueDate="2023-10-07T23:00:00" />
+      <column name="numero_documento" value="REF/11/GAS" />
+      <column name="descripcion" value="Esto es el concepto: GAS-01" />
+      <column name="tercero" value="PEPE S.L" />
+      <column name="importe_inicial" valueNumeric="1000.00" />
+      <column name="importe_iva" valueNumeric="1210.00" />
+      <column name="importe_definitivo" valueNumeric="2210.00" />
+    </insert>
+  </changeSet>
+
+  <!-- Datos iniciales para ING -->
+  <changeSet context="dev" author="master" id="00.01.00-dato-economico-12">
+    <insert tableName="dato_economico">
+      <column name="id" valueSequenceNext="dato_economico_seq" />
+      <column name="proyecto_id" value="11345" />
+      <column name="descripcion" value="Descripción: NCONT-1" />
+      <column name="tipo_operacion" value="ING" />
+      <column name="fecha" valueDate="2023-10-07T23:00:00" />
+      <column name="numero_documento" value="REF/11/ING" />
+      <column name="tercero" value="PEPE S.L" />
+      <column name="importe_inicial" valueNumeric="1234.00" />
+      <column name="importe_iva" valueNumeric="2222.00" />
+    </insert>
+
+    <insert tableName="dato_economico">
+      <column name="id" valueSequenceNext="dato_economico_seq" />
+      <column name="proyecto_id" value="34123" />
+      <column name="descripcion" value="Descripción: NCONT-2" />
+      <column name="tipo_operacion" value="ING" />
+      <column name="fecha" valueDate="2023-10-07T23:00:00" />
+      <column name="numero_documento" value="REF/01/ING" />
+      <column name="tercero" value="TREE S.L" />
+      <column name="importe_inicial" valueNumeric="1111.00" />
+      <column name="importe_iva" valueNumeric="3254.00" />
+    </insert>
+
+    <insert tableName="dato_economico">
+      <column name="id" valueSequenceNext="dato_economico_seq" />
+      <column name="proyecto_id" value="33939" />
+      <column name="descripcion" value="Descripción: NCONT-3" />
+      <column name="tipo_operacion" value="ING" />
+      <column name="fecha" valueDate="2023-10-07T23:00:00" />
+      <column name="numero_documento" value="REF/002/ING" />
+      <column name="tercero" value="TREE TECH S.L" />
+      <column name="importe_inicial" valueNumeric="1000.00" />
+      <column name="importe_iva" valueNumeric="9877.00" />
+    </insert>
+  </changeSet>
+
+  <changeSet context="dev" author="master" id="00.01.00-dato-economico-procedure" dbms="oracle">
+    <sql splitStatements="false" stripComments="false">
+        <![CDATA[
+          CREATE OR REPLACE PROCEDURE ${schemaPrefix}mock_insert_dato_economico(
+              p_proyecto_id     IN NUMBER,
+              p_anualidad       IN NUMBER,
+              p_tipo_operacion  IN VARCHAR
+          ) IS
+              v_id NUMBER;
+              v_importe1 NUMBER;
+              v_importe2 NUMBER;
+              v_importe3 NUMBER;
+              v_nombre_tercero VARCHAR(100);
+              v_aplicacion VARCHAR(100);
+          BEGIN
+              -- Obtener siguiente ID
+              v_id := dato_economico_seq.NEXTVAL;
+
+              -- importes aleatorios
+              v_importe1 := ROUND(DBMS_RANDOM.VALUE(1000, 99999), 2);
+              v_importe2 := ROUND(DBMS_RANDOM.VALUE(1000, 99999), 2);
+              v_importe3 := ROUND(DBMS_RANDOM.VALUE(1000, 99999), 2);
+
+              -- Nombre aleatorio
+              v_nombre_tercero := CASE TRUNC(DBMS_RANDOM.VALUE(1,6))
+                                    WHEN 1 THEN 'TREELOGIC S.L'
+                                    WHEN 2 THEN 'TREE S.A'
+                                    WHEN 3 THEN 'TREE TECH S.L'
+                                    WHEN 4 THEN 'PEPE S.A'
+                                    WHEN 5 THEN 'PACO S.L'
+                                  END;
+
+              -- Aplicación: AP-{proyecto_id}-{id}
+              v_aplicacion := 'AP-' || p_proyecto_id || '-' || v_id;
+
+              ----------------------------------------------------------------------
+              -- EPA ---------------------------------------------------------------
+              ----------------------------------------------------------------------
+              IF p_tipo_operacion = 'EPA' THEN
+                  INSERT INTO ${schemaPrefix}dato_economico(
+                      id, proyecto_id, anualidad,
+                      tipo_dato_economico, tipo_operacion,
+                      aplicacion_presupuestaria,
+                      importe_inicial, importe_definitivo,
+                      importe_disponible, derechos, cobros
+                  )
+                  VALUES (
+                      v_id, p_proyecto_id, p_anualidad,
+                      CASE WHEN MOD(v_id,2)=0 THEN 'Gasto' ELSE 'Ingreso' END,
+                      'EPA',
+                      v_aplicacion,
+                      v_importe1, v_importe2, v_importe3,
+                      ROUND(v_importe1/2,2), ROUND(v_importe1/3,2)
+                  );
+
+              ----------------------------------------------------------------------
+              -- EPG ---------------------------------------------------------------
+              ----------------------------------------------------------------------
+              ELSIF p_tipo_operacion = 'EPG' THEN
+                  INSERT INTO dato_economico (
+                      id, proyecto_id, anualidad, tipo_operacion, tipo_dato_economico,
+                      aplicacion_presupuestaria, importe_presupuestado, importe_concedido,
+                      importe_definitivo, gastado, pagado, pendiente_pago, reservado, disponible
+                  )
+                  VALUES (
+                      v_id, p_proyecto_id, p_anualidad, 'EPG', 'Gasto',
+                      v_aplicacion, v_importe1, v_importe2,
+                      ROUND(v_importe1*0.8,2),
+                      ROUND(v_importe1*0.7,2),
+                      ROUND(v_importe1*0.9,2),
+                      ROUND(v_importe1*0.1,2),
+                      ROUND(v_importe1*0.05,2),
+                      ROUND(v_importe1*0.03,2)
+                  );
+
+              ----------------------------------------------------------------------
+              -- EPI ---------------------------------------------------------------
+              ----------------------------------------------------------------------
+              ELSIF p_tipo_operacion = 'EPI' THEN
+                  INSERT INTO dato_economico (
+                      id, proyecto_id, anualidad, tipo_operacion, tipo_dato_economico,
+                      aplicacion_presupuestaria, importe_presupuestado, importe_definitivo,
+                      derechos, cobros
+                  )
+                  VALUES (
+                      v_id, p_proyecto_id, p_anualidad, 'EPI', 'Ingreso',
+                      v_aplicacion, v_importe1, v_importe2,
+                      ROUND(v_importe1*0.5,2),
+                      ROUND(v_importe1*0.7,2)
+                  );
+
+              ----------------------------------------------------------------------
+              -- DOG ---------------------------------------------------------------
+              ----------------------------------------------------------------------
+              ELSIF p_tipo_operacion = 'DOG' THEN
+                  INSERT INTO dato_economico (
+                      id, proyecto_id, anualidad, tipo_operacion, tipo_dato_economico,
+                      aplicacion_presupuestaria, numero_documento, fecha,
+                      descripcion, gastado_ejecutado, gastado_comprometido, disponible
+                  )
+                  VALUES (
+                      v_id, p_proyecto_id, p_anualidad, 'DOG', 'Gasto',
+                      v_aplicacion, 'D/'||v_id,
+                      SYSTIMESTAMP,
+                      'Descripción detalle operación gasto ' || v_aplicacion,
+                      v_importe1, v_importe2, v_importe3
+                  );
+
+              ----------------------------------------------------------------------
+              -- DOI ---------------------------------------------------------------
+              ----------------------------------------------------------------------
+              ELSIF p_tipo_operacion = 'DOI' THEN
+                  INSERT INTO dato_economico (
+                      id, proyecto_id, anualidad, tipo_operacion, tipo_dato_economico,
+                      numero_documento, aplicacion_presupuestaria, fecha,
+                      descripcion, tercero, importe_inicial, importe_iva
+                  )
+                  VALUES (
+                      v_id, p_proyecto_id, p_anualidad, 'DOI', 'Ingreso',
+                      'D/'||v_id, v_aplicacion, SYSTIMESTAMP,
+                      'Descripción operación ingreso ' || v_aplicacion,
+                      v_nombre_tercero,
+                      v_importe1, v_importe1*1.21
+                  );
+
+              ----------------------------------------------------------------------
+              -- DOM ---------------------------------------------------------------
+              ----------------------------------------------------------------------
+              ELSIF p_tipo_operacion = 'DOM' THEN
+                  INSERT INTO dato_economico (
+                      id, proyecto_id, anualidad, tipo_operacion, tipo_dato_economico,
+                      aplicacion_presupuestaria, fecha, descripcion, importe_inicial
+                  )
+                  VALUES (
+                      v_id, p_proyecto_id, p_anualidad, 'DOM', 'Ingreso',
+                      v_aplicacion, SYSTIMESTAMP,
+                      'Operación modificación ingreso ' || v_aplicacion,
+                      v_importe1
+                  );
+
+              ----------------------------------------------------------------------
+              -- FJF ---------------------------------------------------------------
+              ----------------------------------------------------------------------
+              ELSIF p_tipo_operacion = 'FJF' THEN
+                  INSERT INTO dato_economico (
+                      id, proyecto_id, anualidad, tipo_operacion,
+                      aplicacion_presupuestaria, fecha, fecha_devengo,
+                      numero_documento, descripcion,
+                      importe_inicial, importe_iva, pagado, tercero
+                  )
+                  VALUES (
+                      v_id, p_proyecto_id, p_anualidad, 'FJF',
+                      v_aplicacion,
+                      SYSTIMESTAMP,
+                      SYSTIMESTAMP + 365,
+                      'REF/'||v_id||'/FJF',
+                      'Concepto factura ' || v_aplicacion,
+                      v_importe1, v_importe2, v_importe3,
+                      v_nombre_tercero
+                  );
+
+              ----------------------------------------------------------------------
+              -- FJV ---------------------------------------------------------------
+              ----------------------------------------------------------------------
+              ELSIF p_tipo_operacion = 'FJV' THEN
+                  INSERT INTO dato_economico (
+                      id, proyecto_id, anualidad, tipo_operacion, aplicacion_presupuestaria,
+                      fecha, fecha_salida, fecha_vuelta, fecha_devengo,
+                      numero_documento, numero_comision,
+                      descripcion, destino,
+                      importe_definitivo, importe_locomocion,
+                      importe_alojamiento, importe_dietas, tercero
+                  )
+                  VALUES (
+                      v_id, p_proyecto_id, p_anualidad, 'FJV', v_aplicacion,
+                      SYSTIMESTAMP,
+                      SYSTIMESTAMP - 3,
+                      SYSTIMESTAMP - 1,
+                      SYSTIMESTAMP + 365,
+                      'REF/'||v_id||'/FJV',
+                      'NCOMISION/'||v_id,
+                      'Motivo del viaje ' || v_aplicacion,
+                      'Destino: Asturias',
+                      v_importe1, v_importe2, v_importe3,
+                      ROUND(v_importe1*0.05,2),
+                      v_nombre_tercero
+                  );
+                  
+              ----------------------------------------------------------------------
+              -- FJP ---------------------------------------------------------------
+              ----------------------------------------------------------------------
+              ELSIF p_tipo_operacion = 'FJP' THEN
+                  INSERT INTO ${schemaPrefix}dato_economico(
+                      id, proyecto_id, anualidad, tipo_operacion,
+                      aplicacion_presupuestaria, fecha, fecha_devengo,
+                      numero_documento, numero_identificacion,
+                      descripcion, nombre_completo,
+                      importe_inicial
+                  )
+                  VALUES (
+                      v_id,
+                      p_proyecto_id,
+                      p_anualidad,
+                      'FJP',
+                      v_aplicacion,
+                      SYSTIMESTAMP,
+                      SYSTIMESTAMP + 365,
+                      'REF/' || LPAD(v_id, 2, '0') || '/FJP',
+                      'ID-' || v_id,
+                      'Descripción FJP ' || v_aplicacion,
+                      'Nombre FJP ' || v_id,
+                      v_importe1
+                  );
+                  
+              ----------------------------------------------------------------------
+              -- FEM ---------------------------------------------------------------
+              ----------------------------------------------------------------------
+              ELSIF p_tipo_operacion = 'FEM' THEN
+                  INSERT INTO ${schemaPrefix}dato_economico(
+                      id, proyecto_id, anualidad, tipo_operacion,
+                      aplicacion_presupuestaria, fecha, fecha_emision, fecha_cobro,
+                      numero_documento, numero_prevision,
+                      descripcion, tercero,
+                      importe_inicial, porcentaje_iva, importe_iva,
+                      importe_definitivo, cobros, estado
+                  )
+                  VALUES (
+                      v_id,
+                      p_proyecto_id,
+                      p_anualidad,
+                      'FEM',
+                      v_aplicacion,
+                      SYSTIMESTAMP,
+                      SYSTIMESTAMP + 30,
+                      SYSTIMESTAMP + 60,
+                      'REF/' || v_id || '/FEM',
+                      'PREV-' || v_id,
+                      'Esto es el concepto FEM ' || v_aplicacion,
+                      v_nombre_tercero,
+                      v_importe1,
+                      21,
+                      ROUND(v_importe1 * 0.21, 2),
+                      v_importe2,
+                      v_importe3,
+                      'Estado'
+                  );
+                  
+              ----------------------------------------------------------------------
+              -- GAS ---------------------------------------------------------------
+              ----------------------------------------------------------------------
+              ELSIF p_tipo_operacion = 'GAS' THEN
+                  INSERT INTO ${schemaPrefix}dato_economico(
+                      id, invencion_id, tipo_operacion, tipo_dato_economico,
+                      fecha, numero_documento, descripcion,
+                      tercero, importe_inicial, importe_iva, importe_definitivo
+                  )
+                  VALUES (
+                      v_id,
+                      TRUNC(DBMS_RANDOM.VALUE(1, 999)), -- invencion_id aleatorio
+                      'GAS',
+                      'Gasto',
+                      SYSTIMESTAMP,
+                      'REF/' || v_id || '/GAS',
+                      'Esto es el concepto GAS ' || v_id,
+                      v_nombre_tercero,
+                      v_importe1,
+                      ROUND(v_importe1 * 0.21, 2),
+                      v_importe2
+                  );
+
+              ----------------------------------------------------------------------
+              -- ING ---------------------------------------------------------------
+              ----------------------------------------------------------------------
+              ELSIF p_tipo_operacion = 'ING' THEN
+                  INSERT INTO ${schemaPrefix}dato_economico(
+                      id, proyecto_id, descripcion, tipo_operacion,
+                      fecha, numero_documento, tercero,
+                      importe_inicial, importe_iva
+                  )
+                  VALUES (
+                      v_id,
+                      p_proyecto_id,
+                      'Descripción mock ING para ' || v_aplicacion,
+                      'ING',
+                      SYSTIMESTAMP,
+                      'REF/' || v_id || '/ING',
+                      v_nombre_tercero,
+                      v_importe1,
+                      ROUND(v_importe1 * 0.21, 2)
+                  );
+
+
+              END IF;
+
+          END mock_insert_dato_economico;
+        ]]>
+    </sql>
+  </changeSet>
+
+
+  <changeSet context="dev" author="master" id="00.01.00-dato-economico-procedure" dbms="mssql">
+    <sql splitStatements="false" stripComments="false">
+    <![CDATA[
+    CREATE OR ALTER PROCEDURE ${schemaPrefix}mock_insert_dato_economico
+        @p_proyecto_id     INT,
+        @p_anualidad       INT,
+        @p_tipo_operacion  VARCHAR(10)
+    AS
+    BEGIN
+        SET NOCOUNT ON;
+
+        DECLARE 
+            @v_id BIGINT,
+            @v_importe1 DECIMAL(18,2),
+            @v_importe2 DECIMAL(18,2),
+            @v_importe3 DECIMAL(18,2),
+            @v_nombre_tercero VARCHAR(100),
+            @v_aplicacion VARCHAR(100),
+            @v_rand INT;
+
+        ----------------------------------------------------
+        -- Obtener siguiente ID
+        ----------------------------------------------------
+        SET @v_id = NEXT VALUE FOR dato_economico_seq;
+
+        ----------------------------------------------------
+        -- Importes aleatorios
+        ----------------------------------------------------
+        SET @v_importe1 = ROUND(RAND()*(99999-1000)+1000,2);
+        SET @v_importe2 = ROUND(RAND()*(99999-1000)+1000,2);
+        SET @v_importe3 = ROUND(RAND()*(99999-1000)+1000,2);
+
+        ----------------------------------------------------
+        -- Nombre aleatorio
+        ----------------------------------------------------
+        SET @v_rand = FLOOR(RAND()*5)+1;
+        SET @v_nombre_tercero =
+            CASE @v_rand
+                WHEN 1 THEN 'TREELOGIC S.L'
+                WHEN 2 THEN 'TREE S.A'
+                WHEN 3 THEN 'TREE TECH S.L'
+                WHEN 4 THEN 'PEPE S.A'
+                WHEN 5 THEN 'PACO S.L'
+            END;
+
+        SET @v_aplicacion = 'AP-' + CAST(@p_proyecto_id AS VARCHAR) + '-' + CAST(@v_id AS VARCHAR);
+
+        ----------------------------------------------------
+        -- EPA
+        ----------------------------------------------------
+        IF @p_tipo_operacion = 'EPA' 
+        BEGIN
+            INSERT INTO ${schemaPrefix}dato_economico(
+                id, proyecto_id, anualidad,
+                tipo_dato_economico, tipo_operacion,
+                aplicacion_presupuestaria,
+                importe_inicial, importe_definitivo,
+                importe_disponible, derechos, cobros
+            )
+            VALUES (
+                @v_id, @p_proyecto_id, @p_anualidad,
+                CASE WHEN @v_id % 2 = 0 THEN 'Gasto' ELSE 'Ingreso' END,
+                'EPA',
+                @v_aplicacion,
+                @v_importe1, @v_importe2, @v_importe3,
+                ROUND(@v_importe1/2,2), ROUND(@v_importe1/3,2)
+            );
+        END
+        ----------------------------------------------------
+        -- EPG
+        ----------------------------------------------------
+        ELSE IF @p_tipo_operacion = 'EPG'
+        BEGIN
+            INSERT INTO dato_economico (
+                id, proyecto_id, anualidad, tipo_operacion, tipo_dato_economico,
+                aplicacion_presupuestaria, importe_presupuestado, importe_concedido,
+                importe_definitivo, gastado, pagado, pendiente_pago, reservado, disponible
+            )
+            VALUES (
+                @v_id, @p_proyecto_id, @p_anualidad, 'EPG', 'Gasto',
+                @v_aplicacion, @v_importe1, @v_importe2,
+                ROUND(@v_importe1*0.8,2),
+                ROUND(@v_importe1*0.7,2),
+                ROUND(@v_importe1*0.9,2),
+                ROUND(@v_importe1*0.1,2),
+                ROUND(@v_importe1*0.05,2),
+                ROUND(@v_importe1*0.03,2)
+            );
+        END
+        ----------------------------------------------------
+        -- EPI
+        ----------------------------------------------------
+        ELSE IF @p_tipo_operacion = 'EPI'
+        BEGIN
+            INSERT INTO dato_economico (
+                id, proyecto_id, anualidad, tipo_operacion, tipo_dato_economico,
+                aplicacion_presupuestaria, importe_presupuestado, importe_definitivo,
+                derechos, cobros
+            )
+            VALUES (
+                @v_id, @p_proyecto_id, @p_anualidad, 'EPI', 'Ingreso',
+                @v_aplicacion, @v_importe1, @v_importe2,
+                ROUND(@v_importe1*0.5,2),
+                ROUND(@v_importe1*0.7,2)
+            );
+        END
+        ----------------------------------------------------
+        -- DOG
+        ----------------------------------------------------
+        ELSE IF @p_tipo_operacion = 'DOG'
+        BEGIN
+            INSERT INTO dato_economico (
+                id, proyecto_id, anualidad, tipo_operacion, tipo_dato_economico,
+                aplicacion_presupuestaria, numero_documento, fecha,
+                descripcion, gastado_ejecutado, gastado_comprometido, disponible
+            )
+            VALUES (
+                @v_id, @p_proyecto_id, @p_anualidad, 'DOG', 'Gasto',
+                @v_aplicacion, 'D/' + CAST(@v_id AS VARCHAR),
+                SYSDATETIME(),
+                'Descripción detalle operación gasto ' + @v_aplicacion,
+                @v_importe1, @v_importe2, @v_importe3
+            );
+        END
+        ----------------------------------------------------
+        -- DOI
+        ----------------------------------------------------
+        ELSE IF @p_tipo_operacion = 'DOI'
+        BEGIN
+            INSERT INTO dato_economico (
+                id, proyecto_id, anualidad, tipo_operacion, tipo_dato_economico,
+                numero_documento, aplicacion_presupuestaria, fecha,
+                descripcion, tercero, importe_inicial, importe_iva
+            )
+            VALUES (
+                @v_id, @p_proyecto_id, @p_anualidad, 'DOI', 'Ingreso',
+                'D/' + CAST(@v_id AS VARCHAR), @v_aplicacion, SYSDATETIME(),
+                'Descripción operación ingreso ' + @v_aplicacion,
+                @v_nombre_tercero,
+                @v_importe1, ROUND(@v_importe1*1.21,2)
+            );
+        END
+        ----------------------------------------------------
+        -- DOM
+        ----------------------------------------------------
+        ELSE IF @p_tipo_operacion = 'DOM'
+        BEGIN
+            INSERT INTO dato_economico (
+                id, proyecto_id, anualidad, tipo_operacion, tipo_dato_economico,
+                aplicacion_presupuestaria, fecha, descripcion, importe_inicial
+            )
+            VALUES (
+                @v_id, @p_proyecto_id, @p_anualidad, 'DOM', 'Ingreso',
+                @v_aplicacion, SYSDATETIME(),
+                'Operación modificación ingreso ' + @v_aplicacion,
+                @v_importe1
+            );
+        END
+        ----------------------------------------------------
+        -- FJF
+        ----------------------------------------------------
+        ELSE IF @p_tipo_operacion = 'FJF'
+        BEGIN
+            INSERT INTO dato_economico (
+                id, proyecto_id, anualidad, tipo_operacion,
+                aplicacion_presupuestaria, fecha, fecha_devengo,
+                numero_documento, descripcion,
+                importe_inicial, importe_iva, pagado, tercero
+            )
+            VALUES (
+                @v_id, @p_proyecto_id, @p_anualidad, 'FJF',
+                @v_aplicacion,
+                SYSDATETIME(),
+                DATEADD(DAY, 365, SYSDATETIME()),
+                'REF/' + CAST(@v_id AS VARCHAR) + '/FJF',
+                'Concepto factura ' + @v_aplicacion,
+                @v_importe1, @v_importe2, @v_importe3,
+                @v_nombre_tercero
+            );
+        END
+        ----------------------------------------------------
+        -- FJV
+        ----------------------------------------------------
+        ELSE IF @p_tipo_operacion = 'FJV'
+        BEGIN
+            INSERT INTO dato_economico (
+                id, proyecto_id, anualidad, tipo_operacion, aplicacion_presupuestaria,
+                fecha, fecha_salida, fecha_vuelta, fecha_devengo,
+                numero_documento, numero_comision,
+                descripcion, destino,
+                importe_definitivo, importe_locomocion,
+                importe_alojamiento, importe_dietas, tercero
+            )
+            VALUES (
+                @v_id, @p_proyecto_id, @p_anualidad, 'FJV', @v_aplicacion,
+                SYSDATETIME(),
+                DATEADD(DAY, -3, SYSDATETIME()),
+                DATEADD(DAY, -1, SYSDATETIME()),
+                DATEADD(DAY, 365, SYSDATETIME()),
+                'REF/' + CAST(@v_id AS VARCHAR) + '/FJV',
+                'NCOMISION/' + CAST(@v_id AS VARCHAR),
+                'Motivo del viaje ' + @v_aplicacion,
+                'Destino: Asturias',
+                @v_importe1, @v_importe2,
+                @v_importe3, ROUND(@v_importe1*0.05,2), @v_nombre_tercero
+            );
+        END
+        ----------------------------------------------------
+        -- FJP
+        ----------------------------------------------------
+        ELSE IF @p_tipo_operacion = 'FJP'
+        BEGIN
+            INSERT INTO ${schemaPrefix}dato_economico(
+                id, proyecto_id, anualidad, tipo_operacion,
+                aplicacion_presupuestaria, fecha, fecha_devengo,
+                numero_documento, numero_identificacion,
+                descripcion, nombre_completo,
+                importe_inicial
+            )
+            VALUES (
+                @v_id,
+                @p_proyecto_id,
+                @p_anualidad,
+                'FJP',
+                @v_aplicacion,
+                SYSDATETIME(),
+                DATEADD(DAY, 365, SYSDATETIME()),
+                'REF/' + RIGHT('00' + CAST(@v_id AS VARCHAR),2) + '/FJP',
+                'ID-' + CAST(@v_id AS VARCHAR),
+                'Descripción FJP ' + @v_aplicacion,
+                'Nombre FJP ' + CAST(@v_id AS VARCHAR),
+                @v_importe1
+            );
+        END
+        ----------------------------------------------------
+        -- FEM
+        ----------------------------------------------------
+        ELSE IF @p_tipo_operacion = 'FEM'
+        BEGIN
+            INSERT INTO ${schemaPrefix}dato_economico(
+                id, proyecto_id, anualidad, tipo_operacion,
+                aplicacion_presupuestaria, fecha, fecha_emision, fecha_cobro,
+                numero_documento, numero_prevision,
+                descripcion, tercero,
+                importe_inicial, porcentaje_iva, importe_iva,
+                importe_definitivo, cobros, estado
+            )
+            VALUES (
+                @v_id,
+                @p_proyecto_id,
+                @p_anualidad,
+                'FEM',
+                @v_aplicacion,
+                SYSDATETIME(),
+                DATEADD(DAY, 30, SYSDATETIME()),
+                DATEADD(DAY, 60, SYSDATETIME()),
+                'REF/' + CAST(@v_id AS VARCHAR) + '/FEM',
+                'PREV-' + CAST(@v_id AS VARCHAR),
+                'Esto es el concepto FEM ' + @v_aplicacion,
+                @v_nombre_tercero,
+                @v_importe1,
+                21,
+                ROUND(@v_importe1 * 0.21, 2),
+                @v_importe2,
+                @v_importe3,
+                'Estado'
+            );
+        END
+        ----------------------------------------------------
+        -- GAS
+        ----------------------------------------------------
+        ELSE IF @p_tipo_operacion = 'GAS'
+        BEGIN
+            INSERT INTO ${schemaPrefix}dato_economico(
+                id, invencion_id, tipo_operacion, tipo_dato_economico,
+                fecha, numero_documento, descripcion,
+                tercero, importe_inicial, importe_iva, importe_definitivo
+            )
+            VALUES (
+                @v_id,
+                FLOOR(RAND()*(999-1)+1), -- invencion_id aleatorio
+                'GAS',
+                'Gasto',
+                SYSDATETIME(),
+                'REF/' + CAST(@v_id AS VARCHAR) + '/GAS',
+                'Esto es el concepto GAS ' + CAST(@v_id AS VARCHAR),
+                @v_nombre_tercero,
+                @v_importe1,
+                ROUND(@v_importe1*0.21,2),
+                @v_importe2
+            );
+        END
+        ----------------------------------------------------
+        -- ING
+        ----------------------------------------------------
+        ELSE IF @p_tipo_operacion = 'ING'
+        BEGIN
+            INSERT INTO ${schemaPrefix}dato_economico(
+                id, proyecto_id, descripcion, tipo_operacion,
+                fecha, numero_documento, tercero,
+                importe_inicial, importe_iva
+            )
+            VALUES (
+                @v_id,
+                @p_proyecto_id,
+                'Descripción mock ING para ' + @v_aplicacion,
+                'ING',
+                SYSDATETIME(),
+                'REF/' + CAST(@v_id AS VARCHAR) + '/ING',
+                @v_nombre_tercero,
+                @v_importe1,
+                ROUND(@v_importe1*0.21,2)
+            );
+        END
+    END;
+    ]]>
+    </sql>
+
+
+  </changeSet>
+
+</databaseChangeLog>

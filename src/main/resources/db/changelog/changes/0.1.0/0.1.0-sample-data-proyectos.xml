@@ -1,0 +1,47 @@
+<?xml version="1.1" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+  xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+  xmlns:pro="http://www.liquibase.org/xml/ns/pro"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd
+                      http://www.liquibase.org/xml/ns/pro http://www.liquibase.org/xml/ns/pro/liquibase-pro-3.8.xsd
+                      http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.8.xsd">
+
+  <changeSet context="dev" author="master" id="00.01.00-proyecto">
+    <insert tableName="proyecto">
+      <column name="id" valueNumeric="34123" />
+      <column name="proyecto_sgi_id" value="11057" />
+      <column name="titulo" value="JUAN DE LA CIERVA 2018 - Mª ISABEL ARCE SÁNCHEZ" />
+      <column name="fecha_inicio" valueDate="2020-07-01T00:00:00" />
+      <column name="fecha_fin" valueDate="2023-06-30T00:00:00" />
+      <column name="responsable_ref" value="01889311" />
+    </insert>
+    <insert tableName="proyecto">
+      <column name="id" valueNumeric="11345" />
+      <column name="proyecto_sgi_id" value="098" />
+      <column name="titulo" value="DOCTOR EN PROGRAMA OFICIAL DE POSGRADO EN NEUROCIENCIA" />
+      <column name="fecha_inicio" valueDate="2008-10-01T00:00:00" />
+      <column name="fecha_fin" valueDate="2016-09-30T00:00:00" />
+      <column name="responsable_ref" value="01889311" />
+    </insert>
+    <insert tableName="proyecto">
+      <column name="id" valueNumeric="33939" />
+      <column name="proyecto_sgi_id" value="12346" />
+      <column name="titulo"
+        value="X MÁSTER PROPIO EN TERAPIA GESTALT EN INTERVENCIÓN PSICOSOCIAL[12343,12344,12345,12346]" />
+      <column name="fecha_inicio" valueDate="2023-09-15T00:00:00" />
+      <column name="fecha_fin" valueDate="2025-03-30T00:00:00" />
+      <column name="responsable_ref" value="01889311" />
+    </insert>
+    <insert tableName="proyecto">
+      <column name="id" valueNumeric="35551" />
+      <column name="proyecto_sgi_id" value="1929" />
+      <column name="titulo"
+        value="HARMONIZATION AND PRE-STANDARDIZATION OF EQUIPMENT, TRAINING AND TACTICAL COORDINATED PROCEDURES FOR FIRST AID VEHICLES DEPLOYMENT ON EUROPEAN MULTI-VICTIM DISASTERS" />
+      <column name="fecha_inicio" valueDate="2021-10-01T00:00:00" />
+      <column name="fecha_fin" valueDate="2023-09-30T00:00:00" />
+      <column name="responsable_ref" value="01889311" />
+    </insert>
+  </changeSet>
+
+</databaseChangeLog>
