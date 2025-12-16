@@ -28,6 +28,7 @@ target/
 build/
 
 ### VS Code ###
+.devcontainer
 .vscode/
 .history/*
 .vscode-server/bin/*
