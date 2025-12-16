@@ -228,6 +228,20 @@
   <changeSet context="dev" author="master" id="00.01.00-dato-economico-11">
     <insert tableName="dato_economico">
       <column name="id" valueSequenceNext="dato_economico_seq" />
+      <column name="invencion_id" value="111" />
+      <column name="tipo_operacion" value="GAS" />
+      <column name="tipo_dato_economico" value="Gasto" />
+      <column name="fecha" valueDate="2023-10-07T23:00:00" />
+      <column name="numero_documento" value="REF/111/GAS" />
+      <column name="descripcion" value="Esto es el concepto: GAS-01" />
+      <column name="tercero" value="TREE S.L" />
+      <column name="importe_inicial" valueNumeric="1250.00" />
+      <column name="importe_iva" valueNumeric="3500.00" />
+      <column name="importe_definitivo" valueNumeric="8210.00" />
+    </insert>
+
+    <insert tableName="dato_economico">
+      <column name="id" valueSequenceNext="dato_economico_seq" />
       <column name="invencion_id" value="113" />
       <column name="tipo_operacion" value="GAS" />
       <column name="tipo_dato_economico" value="Gasto" />
@@ -277,6 +291,99 @@
       <column name="tercero" value="TREE TECH S.L" />
       <column name="importe_inicial" valueNumeric="1000.00" />
       <column name="importe_iva" valueNumeric="9877.00" />
+    </insert>
+
+    <insert tableName="dato_economico">
+      <column name="id" valueSequenceNext="dato_economico_seq" />
+      <column name="proyecto_id" value="1" />
+      <column name="descripcion" value="Descripción: NCONT-1" />
+      <column name="tipo_operacion" value="ING" />
+      <column name="fecha" valueDate="2023-10-07T23:00:00" />
+      <column name="numero_documento" value="REF/1/ING" />
+      <column name="tercero" value="PEPE S.L" />
+      <column name="importe_inicial" valueNumeric="1234.00" />
+      <column name="importe_iva" valueNumeric="2222.00" />
+    </insert>
+
+    <insert tableName="dato_economico">
+      <column name="id" valueSequenceNext="dato_economico_seq" />
+      <column name="proyecto_id" value="2" />
+      <column name="descripcion" value="Descripción: NCONT-2" />
+      <column name="tipo_operacion" value="ING" />
+      <column name="fecha" valueDate="2023-10-07T23:00:00" />
+      <column name="numero_documento" value="REF/2/ING" />
+      <column name="tercero" value="TREE S.L" />
+      <column name="importe_inicial" valueNumeric="1111.00" />
+      <column name="importe_iva" valueNumeric="3254.00" />
+    </insert>
+
+    <insert tableName="dato_economico">
+      <column name="id" valueSequenceNext="dato_economico_seq" />
+      <column name="proyecto_id" value="3" />
+      <column name="descripcion" value="Descripción: NCONT-3" />
+      <column name="tipo_operacion" value="ING" />
+      <column name="fecha" valueDate="2023-10-07T23:00:00" />
+      <column name="numero_documento" value="REF/3/ING" />
+      <column name="tercero" value="TREE TECH S.L" />
+      <column name="importe_inicial" valueNumeric="1000.00" />
+      <column name="importe_iva" valueNumeric="9877.00" />
+    </insert>
+  </changeSet>
+
+  <changeSet context="dev" author="master" id="00.01.00-dato-economico-13">
+    <insert tableName="dato_economico">
+      <column name="id" valueSequenceNext="dato_economico_seq" />
+      <column name="invencion_id" value="107" />
+      <column name="descripcion" value="Descripción: GASREP-1" />
+      <column name="tipo_dato_economico" value="Gasto" />
+      <column name="tipo_operacion" value="REP" />
+      <column name="fecha" valueDate="2023-01-01T23:00:00" />
+      <column name="numero_documento" value="REF/1/REP" />
+      <column name="importe_inicial" valueNumeric="500.00" />
+    </insert>
+
+    <insert tableName="dato_economico">
+      <column name="id" valueSequenceNext="dato_economico_seq" />
+      <column name="invencion_id" value="111" />
+      <column name="descripcion" value="Descripción: GASREP-1" />
+      <column name="tipo_dato_economico" value="Gasto" />
+      <column name="tipo_operacion" value="REP" />
+      <column name="fecha" valueDate="2023-10-07T23:00:00" />
+      <column name="numero_documento" value="REF/001/REP" />
+      <column name="importe_inicial" valueNumeric="1155.00" />
+    </insert>
+
+    <insert tableName="dato_economico">
+      <column name="id" valueSequenceNext="dato_economico_seq" />
+      <column name="invencion_id" value="111" />
+      <column name="descripcion" value="Descripción: GASREP-2" />
+      <column name="tipo_dato_economico" value="Gasto" />
+      <column name="tipo_operacion" value="REP" />
+      <column name="fecha" valueDate="2023-10-07T23:00:00" />
+      <column name="numero_documento" value="REF/002/REP" />
+      <column name="importe_inicial" valueNumeric="888.00" />
+    </insert>
+
+    <insert tableName="dato_economico">
+      <column name="id" valueSequenceNext="dato_economico_seq" />
+      <column name="invencion_id" value="112" />
+      <column name="descripcion" value="Descripción: GASREP-1" />
+      <column name="tipo_dato_economico" value="Gasto" />
+      <column name="tipo_operacion" value="REP" />
+      <column name="fecha" valueDate="2023-10-07T23:00:00" />
+      <column name="numero_documento" value="REF/1/REP" />
+      <column name="importe_inicial" valueNumeric="250.00" />
+    </insert>
+
+    <insert tableName="dato_economico">
+      <column name="id" valueSequenceNext="dato_economico_seq" />
+      <column name="invencion_id" value="113" />
+      <column name="descripcion" value="Descripción: GASREP-1" />
+      <column name="tipo_dato_economico" value="Gasto" />
+      <column name="tipo_operacion" value="REP" />
+      <column name="fecha" valueDate="2023-10-07T23:00:00" />
+      <column name="numero_documento" value="REF/1/REP" />
+      <column name="importe_inicial" valueNumeric="1000.00" />
     </insert>
   </changeSet>
 

@@ -10,6 +10,7 @@ import java.util.stream.Collectors;
 import org.crue.hercules.sgi.framework.rsql.SgiRSQLJPASupport;
 import org.crue.hercules.sgi.sge.config.SgiConfigProperties;
 import org.crue.hercules.sgi.sge.dto.DatoEconomicoColumnaDto;
+import org.crue.hercules.sgi.sge.dto.DatoEconomicoColumnaPiiDto;
 import org.crue.hercules.sgi.sge.dto.DatoEconomicoDetalleOutput;
 import org.crue.hercules.sgi.sge.dto.DatoEconomicoOutput;
 import org.crue.hercules.sgi.sge.enums.EjecucionEconomicaTipoOperacionEnum;
@@ -80,6 +81,12 @@ public class EjecucionEconomicaService {
 
     log.debug("findAllColumnas({}, {}) - end", paging);
     return getColumnasPorTipo(EjecucionEconomicaTipoOperacionEnum.valueOf(tipoOperacion), true);
+  }
+
+  public List<DatoEconomicoColumnaPiiDto> findAllColumnasPii(String query, String tipoOperacion, Pageable paging) {
+
+    log.debug("findAllColumnasPii({}, {}) - end", paging);
+    return getColumnasPiiPorTipo(EjecucionEconomicaTipoOperacionEnum.valueOf(tipoOperacion), true);
   }
 
   /**
@@ -201,6 +208,20 @@ public class EjecucionEconomicaService {
         return DatoEconomicoColumnasFactory.getColumnasGAS(reducido);
       case ING:
         return DatoEconomicoColumnasFactory.getColumnasING(reducido);
+      case REP:
+        return DatoEconomicoColumnasFactory.getColumnasREP(reducido);
+      default:
+        throw new EjecucionEconomicaTipoOperacionNotValidException(tipoOperacion.name());
+    }
+  }
+
+  private List<DatoEconomicoColumnaPiiDto> getColumnasPiiPorTipo(EjecucionEconomicaTipoOperacionEnum tipoOperacion,
+      boolean reducido) {
+    switch (tipoOperacion) {
+      case GAS:
+        return DatoEconomicoColumnasFactory.getColumnasPiiGAS(reducido);
+      case ING:
+        return DatoEconomicoColumnasFactory.getColumnasPiiING();
       default:
         throw new EjecucionEconomicaTipoOperacionNotValidException(tipoOperacion.name());
     }
@@ -328,6 +349,13 @@ public class EjecucionEconomicaService {
         columnas.put(columnasDef.get(3).getId(), dato.getTercero());
         columnas.put(columnasDef.get(4).getId(), dato.getImporteInicial());
         columnas.put(columnasDef.get(5).getId(), dato.getImporteIva());
+        break;
+      case REP:
+        columnas.put(columnasDef.get(0).getId(), DatoEconomicoUtil.formatInstantToDateString(dato.getFecha()));
+        columnas.put(columnasDef.get(1).getId(), dato.getNumDocumento());
+        columnas.put(columnasDef.get(2).getId(), dato.getDescripcion());
+        columnas.put(columnasDef.get(3).getId(), dato.getTipo().name());
+        columnas.put(columnasDef.get(4).getId(), dato.getImporteInicial());
         break;
       default:
         throw new EjecucionEconomicaTipoOperacionNotValidException(tipoOperacion.name());

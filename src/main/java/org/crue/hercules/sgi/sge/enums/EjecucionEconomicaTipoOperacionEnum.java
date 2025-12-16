@@ -26,4 +26,6 @@ public enum EjecucionEconomicaTipoOperacionEnum {
   GAS,
   /** ING (PII - Ejecución económica - ingresos) */
   ING,
+  /** REP (PII - Ejecución económica - reparto - gastos) */
+  REP,
 }

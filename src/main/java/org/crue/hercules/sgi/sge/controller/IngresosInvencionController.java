@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.crue.hercules.sgi.framework.web.bind.annotation.RequestPageable;
 import org.crue.hercules.sgi.sge.dto.DatoEconomicoColumnaDto;
+import org.crue.hercules.sgi.sge.dto.DatoEconomicoColumnaPiiDto;
 import org.crue.hercules.sgi.sge.dto.DatoEconomicoDetalleOutput;
 import org.crue.hercules.sgi.sge.dto.DatoEconomicoOutput;
 import org.crue.hercules.sgi.sge.model.DatoEconomico;
@@ -89,11 +90,11 @@ public class IngresosInvencionController {
    *         filtrados.
    */
   @GetMapping(PATH_COLUMNAS)
-  public ResponseEntity<List<DatoEconomicoColumnaDto>> findAllColumnas(
+  public ResponseEntity<List<DatoEconomicoColumnaPiiDto>> findAllColumnas(
       @RequestParam(name = "q", required = false) String query,
       @RequestPageable(sort = "s") Pageable paging) {
     log.debug("findAllColumnas() - start");
-    List<DatoEconomicoColumnaDto> columnas = service.findAllColumnas(query, TIPO_OPERACION_PII_INGRESOS, paging);
+    List<DatoEconomicoColumnaPiiDto> columnas = service.findAllColumnasPii(query, TIPO_OPERACION_PII_INGRESOS, paging);
     log.debug("findAllColumnas() - end");
     return columnas.isEmpty() ? new ResponseEntity<>(HttpStatus.NO_CONTENT)
         : new ResponseEntity<>(columnas, HttpStatus.OK);

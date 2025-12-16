@@ -5,8 +5,7 @@ import java.util.List;
 
 import org.crue.hercules.sgi.framework.spring.context.support.ApplicationContextSupport;
 import org.crue.hercules.sgi.sge.dto.DatoEconomicoColumnaDto;
-
-import liquibase.pro.packaged.de;
+import org.crue.hercules.sgi.sge.dto.DatoEconomicoColumnaPiiDto;
 
 public class DatoEconomicoColumnasFactory {
 
@@ -331,7 +330,7 @@ public class DatoEconomicoColumnasFactory {
               false),
           new DatoEconomicoColumnaDto(COLUMNAS_ID_3,
               ApplicationContextSupport.getMessage("datoEconomico.columnas.gas.2"),
-              true),
+              false),
           new DatoEconomicoColumnaDto(COLUMNAS_ID_4,
               ApplicationContextSupport.getMessage("datoEconomico.columnas.gas.3"),
               false),
@@ -347,6 +346,53 @@ public class DatoEconomicoColumnasFactory {
           new DatoEconomicoColumnaDto(COLUMNAS_ID_8,
               ApplicationContextSupport.getMessage("datoEconomico.columnas.gas.8"),
               true));
+    }
+  }
+
+  public static List<DatoEconomicoColumnaPiiDto> getColumnasPiiGAS(boolean reducido) {
+    if (reducido) {
+      return Arrays.asList(
+          new DatoEconomicoColumnaPiiDto(COLUMNAS_ID_1,
+              ApplicationContextSupport.getMessage("datoEconomico.columnas.gas.1"),
+              false, false),
+          new DatoEconomicoColumnaPiiDto(COLUMNAS_ID_2,
+              ApplicationContextSupport.getMessage("datoEconomico.columnas.gas.2"),
+              false, false),
+          new DatoEconomicoColumnaPiiDto(COLUMNAS_ID_3,
+              ApplicationContextSupport.getMessage("datoEconomico.columnas.gas.3"),
+              false, false),
+          new DatoEconomicoColumnaPiiDto(COLUMNAS_ID_4,
+              ApplicationContextSupport.getMessage("datoEconomico.columnas.gas.4"),
+              false, false),
+          new DatoEconomicoColumnaPiiDto(COLUMNAS_ID_5,
+              ApplicationContextSupport.getMessage("datoEconomico.columnas.gas.5"),
+              true, true));
+    } else {
+      return Arrays.asList(
+          new DatoEconomicoColumnaPiiDto(COLUMNAS_ID_1,
+              ApplicationContextSupport.getMessage("datoEconomico.columnas.gas.1"),
+              false, false),
+          new DatoEconomicoColumnaPiiDto(COLUMNAS_ID_2,
+              ApplicationContextSupport.getMessage("datoEconomico.columnas.gas.4"),
+              false, false),
+          new DatoEconomicoColumnaPiiDto(COLUMNAS_ID_3,
+              ApplicationContextSupport.getMessage("datoEconomico.columnas.gas.2"),
+              false, false),
+          new DatoEconomicoColumnaPiiDto(COLUMNAS_ID_4,
+              ApplicationContextSupport.getMessage("datoEconomico.columnas.gas.3"),
+              false, false),
+          new DatoEconomicoColumnaPiiDto(COLUMNAS_ID_5,
+              ApplicationContextSupport.getMessage("datoEconomico.columnas.gas.6"),
+              false, false),
+          new DatoEconomicoColumnaPiiDto(COLUMNAS_ID_6,
+              ApplicationContextSupport.getMessage("datoEconomico.columnas.gas.5"),
+              true, true),
+          new DatoEconomicoColumnaPiiDto(COLUMNAS_ID_7,
+              ApplicationContextSupport.getMessage("datoEconomico.columnas.gas.7"),
+              true, false),
+          new DatoEconomicoColumnaPiiDto(COLUMNAS_ID_8,
+              ApplicationContextSupport.getMessage("datoEconomico.columnas.gas.8"),
+              true, false));
     }
   }
 
@@ -370,5 +416,74 @@ public class DatoEconomicoColumnasFactory {
         new DatoEconomicoColumnaDto(COLUMNAS_ID_6,
             ApplicationContextSupport.getMessage("datoEconomico.columnas.ing.6"),
             true));
+  }
+
+  public static List<DatoEconomicoColumnaPiiDto> getColumnasPiiING() {
+    return Arrays.asList(
+        new DatoEconomicoColumnaPiiDto(COLUMNAS_ID_1,
+            ApplicationContextSupport.getMessage("datoEconomico.columnas.ing.1"),
+            false, false),
+        new DatoEconomicoColumnaPiiDto(COLUMNAS_ID_2,
+            ApplicationContextSupport.getMessage("datoEconomico.columnas.ing.2"),
+            false, false),
+        new DatoEconomicoColumnaPiiDto(COLUMNAS_ID_3,
+            ApplicationContextSupport.getMessage("datoEconomico.columnas.ing.3"),
+            false, false),
+        new DatoEconomicoColumnaPiiDto(COLUMNAS_ID_4,
+            ApplicationContextSupport.getMessage("datoEconomico.columnas.ing.4"),
+            false, false),
+        new DatoEconomicoColumnaPiiDto(COLUMNAS_ID_5,
+            ApplicationContextSupport.getMessage("datoEconomico.columnas.ing.5"),
+            true, true),
+        new DatoEconomicoColumnaPiiDto(COLUMNAS_ID_6,
+            ApplicationContextSupport.getMessage("datoEconomico.columnas.ing.6"),
+            true, false));
+  }
+
+  public static List<DatoEconomicoColumnaDto> getColumnasREP(boolean reducido) {
+    if (reducido) {
+      return Arrays.asList(
+          new DatoEconomicoColumnaDto(COLUMNAS_ID_1,
+              ApplicationContextSupport.getMessage("datoEconomico.columnas.gas.1"),
+              false),
+          new DatoEconomicoColumnaDto(COLUMNAS_ID_2,
+              ApplicationContextSupport.getMessage("datoEconomico.columnas.gas.2"),
+              false),
+          new DatoEconomicoColumnaDto(COLUMNAS_ID_3,
+              ApplicationContextSupport.getMessage("datoEconomico.columnas.gas.3"),
+              false),
+          new DatoEconomicoColumnaDto(COLUMNAS_ID_4,
+              ApplicationContextSupport.getMessage("datoEconomico.columnas.gas.4"),
+              false),
+          new DatoEconomicoColumnaDto(COLUMNAS_ID_5,
+              ApplicationContextSupport.getMessage("datoEconomico.columnas.gas.5"),
+              true));
+    } else {
+      return Arrays.asList(
+          new DatoEconomicoColumnaDto(COLUMNAS_ID_1,
+              ApplicationContextSupport.getMessage("datoEconomico.columnas.gas.1"),
+              false),
+          new DatoEconomicoColumnaDto(COLUMNAS_ID_2,
+              ApplicationContextSupport.getMessage("datoEconomico.columnas.gas.4"),
+              false),
+          new DatoEconomicoColumnaDto(COLUMNAS_ID_3,
+              ApplicationContextSupport.getMessage("datoEconomico.columnas.gas.2"),
+              false),
+          new DatoEconomicoColumnaDto(COLUMNAS_ID_4,
+              ApplicationContextSupport.getMessage("datoEconomico.columnas.gas.3"),
+              false),
+          new DatoEconomicoColumnaDto(COLUMNAS_ID_5,
+              ApplicationContextSupport.getMessage("datoEconomico.columnas.gas.6"),
+              false),
+          new DatoEconomicoColumnaDto(COLUMNAS_ID_6,
+              ApplicationContextSupport.getMessage("datoEconomico.columnas.gas.5"),
+              true),
+          new DatoEconomicoColumnaDto(COLUMNAS_ID_7,
+              ApplicationContextSupport.getMessage("datoEconomico.columnas.gas.7"),
+              true),
+          new DatoEconomicoColumnaDto(COLUMNAS_ID_8,
+              ApplicationContextSupport.getMessage("datoEconomico.columnas.gas.8"),
+              true));
+    }
   }
 }
