@@ -104,8 +104,6 @@ public class ProyectoService {
       throw new ProyectoNotFoundException(id);
     }
 
-    repository.deleteById(id);
-
     log.debug("processNotificacionRelacionesEliminadas - id: {}, proyectoRelacionesEliminadas: {} - end", id,
         proyectoRelacionesEliminadas);
   }

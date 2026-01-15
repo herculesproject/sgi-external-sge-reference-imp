@@ -41,7 +41,6 @@
       </column>
       <column name="fecha_fin" type="TIMESTAMP" />
       <column name="fecha_inicio" type="TIMESTAMP" />
-      <column name="proyecto_sgi_id" type="VARCHAR(255)" />
       <column name="titulo" type="VARCHAR(255)" />
       <column name="responsable_ref" type="VARCHAR(255)" />
     </createTable>

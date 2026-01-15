@@ -34,7 +34,6 @@ public class Proyecto extends BaseEntity {
   private static final String SEQUENCE_NAME = TABLE_NAME + "_seq";
 
   private static final String ID_COLUMN_NAME = "id";
-  private static final String PROYECTO_SGI_ID_COLUMN_NAME = "proyecto_sgi_id";
   private static final String TITULO_COLUMN_NAME = "titulo";
   private static final String FECHA_INICIO_COLUMN_NAME = "fecha_inicio";
   private static final String FECHA_FIN_COLUMN_NAME = "fecha_fin";
@@ -60,11 +59,6 @@ public class Proyecto extends BaseEntity {
   /** Fecha fin */
   @Column(name = FECHA_FIN_COLUMN_NAME, nullable = true)
   private Instant fechaFin;
-
-  /** Proyecto SGI id */
-  @Column(name = PROYECTO_SGI_ID_COLUMN_NAME)
-  @NotBlank
-  private String proyectoSgiId;
 
   /** Proyecto SGI id */
   @Column(name = RESPONSABLE_COLUMN_NAME)
