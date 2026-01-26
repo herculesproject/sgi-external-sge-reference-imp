@@ -19,8 +19,6 @@
       <column name="importe_inicial" valueNumeric="100000.00" />
       <column name="importe_definitivo" valueNumeric="95000.00" />
       <column name="importe_disponible" valueNumeric="5000.00" />
-      <column name="derechos" valueNumeric="80000.00" />
-      <column name="cobros" valueNumeric="75000.00" />
     </insert>
 
     <insert tableName="dato_economico">
@@ -33,8 +31,6 @@
       <column name="importe_inicial" valueNumeric="22222.22" />
       <column name="importe_definitivo" valueNumeric="1234.56" />
       <column name="importe_disponible" valueNumeric="10000.00" />
-      <column name="derechos" valueNumeric="99900.00" />
-      <column name="cobros" valueNumeric="11100.00" />
     </insert>
 
     <insert tableName="dato_economico">
@@ -44,9 +40,6 @@
       <column name="tipo_dato_economico" value="Ingreso" />
       <column name="tipo_operacion" value="EPA" />
       <column name="aplicacion_presupuestaria" value="AP-01" />
-      <column name="importe_inicial" valueNumeric="8970.00" />
-      <column name="importe_definitivo" valueNumeric="11111.00" />
-      <column name="importe_disponible" valueNumeric="99990.00" />
       <column name="derechos" valueNumeric="11000.00" />
       <column name="cobros" valueNumeric="77000.00" />
     </insert>
@@ -426,21 +419,36 @@
               -- EPA ---------------------------------------------------------------
               ----------------------------------------------------------------------
               IF p_tipo_operacion = 'EPA' THEN
-                  INSERT INTO ${schemaPrefix}dato_economico(
-                      id, proyecto_id, anualidad,
-                      tipo_dato_economico, tipo_operacion,
-                      aplicacion_presupuestaria,
-                      importe_inicial, importe_definitivo,
-                      importe_disponible, derechos, cobros
-                  )
-                  VALUES (
-                      v_id, p_proyecto_id, p_anualidad,
-                      CASE WHEN MOD(v_id,2)=0 THEN 'Gasto' ELSE 'Ingreso' END,
-                      'EPA',
-                      v_aplicacion,
-                      v_importe1, v_importe2, v_importe3,
-                      ROUND(v_importe1/2,2), ROUND(v_importe1/3,2)
-                  );
+
+                -- GASTO
+                INSERT INTO ${schemaPrefix}dato_economico (
+                    id, proyecto_id, anualidad,
+                    tipo_dato_economico, tipo_operacion,
+                    aplicacion_presupuestaria,
+                    importe_inicial, importe_definitivo, importe_disponible
+                )
+                VALUES (
+                    v_id, p_proyecto_id, p_anualidad,
+                    'Gasto', 'EPA',
+                    v_aplicacion,
+                    v_importe1, v_importe2, v_importe3
+                );
+
+                -- INGRESO
+                v_id := dato_economico_seq.NEXTVAL;
+                INSERT INTO ${schemaPrefix}dato_economico (
+                    id, proyecto_id, anualidad,
+                    tipo_dato_economico, tipo_operacion,
+                    aplicacion_presupuestaria,
+                    derechos, cobros
+                )
+                VALUES (
+                    v_id, p_proyecto_id, p_anualidad,
+                    'Ingreso', 'EPA',
+                    v_aplicacion,
+                    ROUND(v_importe1 / 2, 2),
+                    ROUND(v_importe1 / 3, 2)
+                );
 
               ----------------------------------------------------------------------
               -- EPG ---------------------------------------------------------------
@@ -755,22 +763,37 @@
         ----------------------------------------------------
         -- EPA
         ----------------------------------------------------
-        IF @p_tipo_operacion = 'EPA' 
+        IF @p_tipo_operacion = 'EPA'
         BEGIN
-            INSERT INTO ${schemaPrefix}dato_economico(
+            -- GASTO
+            INSERT INTO ${schemaPrefix}dato_economico (
                 id, proyecto_id, anualidad,
                 tipo_dato_economico, tipo_operacion,
                 aplicacion_presupuestaria,
-                importe_inicial, importe_definitivo,
-                importe_disponible, derechos, cobros
+                importe_inicial, importe_definitivo, importe_disponible
             )
             VALUES (
                 @v_id, @p_proyecto_id, @p_anualidad,
-                CASE WHEN @v_id % 2 = 0 THEN 'Gasto' ELSE 'Ingreso' END,
-                'EPA',
+                'Gasto', 'EPA',
                 @v_aplicacion,
-                @v_importe1, @v_importe2, @v_importe3,
-                ROUND(@v_importe1/2,2), ROUND(@v_importe1/3,2)
+                @v_importe1, @v_importe2, @v_importe3
+            );
+
+            -- INGRESO
+            SET @v_id = NEXT VALUE FOR dato_economico_seq;
+
+            INSERT INTO ${schemaPrefix}dato_economico (
+                id, proyecto_id, anualidad,
+                tipo_dato_economico, tipo_operacion,
+                aplicacion_presupuestaria,
+                derechos, cobros
+            )
+            VALUES (
+                @v_id, @p_proyecto_id, @p_anualidad,
+                'Ingreso', 'EPA',
+                @v_aplicacion,
+                ROUND(@v_importe1 / 2.0, 2),
+                ROUND(@v_importe1 / 3.0, 2)
             );
         END
         ----------------------------------------------------
