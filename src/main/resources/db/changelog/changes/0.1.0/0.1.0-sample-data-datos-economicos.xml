@@ -387,7 +387,7 @@
     </insert>
   </changeSet>
 
-  <changeSet context="dev" author="master" id="00.01.00-dato-economico-procedure" dbms="oracle">
+  <changeSet context="dev" author="master" id="00.01.00-dato-economico-procedure-oracle" dbms="oracle">
     <sql splitStatements="false" stripComments="false">
         <![CDATA[
           CREATE OR REPLACE PROCEDURE ${schemaPrefix}mock_insert_dato_economico(
@@ -446,7 +446,7 @@
               -- EPG ---------------------------------------------------------------
               ----------------------------------------------------------------------
               ELSIF p_tipo_operacion = 'EPG' THEN
-                  INSERT INTO dato_economico (
+                  INSERT INTO ${schemaPrefix}dato_economico (
                       id, proyecto_id, anualidad, tipo_operacion, tipo_dato_economico,
                       aplicacion_presupuestaria, importe_presupuestado, importe_concedido,
                       importe_definitivo, gastado, pagado, pendiente_pago, reservado, disponible
@@ -466,7 +466,7 @@
               -- EPI ---------------------------------------------------------------
               ----------------------------------------------------------------------
               ELSIF p_tipo_operacion = 'EPI' THEN
-                  INSERT INTO dato_economico (
+                  INSERT INTO ${schemaPrefix}dato_economico (
                       id, proyecto_id, anualidad, tipo_operacion, tipo_dato_economico,
                       aplicacion_presupuestaria, importe_presupuestado, importe_definitivo,
                       derechos, cobros
@@ -482,7 +482,7 @@
               -- DOG ---------------------------------------------------------------
               ----------------------------------------------------------------------
               ELSIF p_tipo_operacion = 'DOG' THEN
-                  INSERT INTO dato_economico (
+                  INSERT INTO ${schemaPrefix}dato_economico (
                       id, proyecto_id, anualidad, tipo_operacion, tipo_dato_economico,
                       aplicacion_presupuestaria, numero_documento, fecha,
                       descripcion, gastado_ejecutado, gastado_comprometido, disponible
@@ -499,7 +499,7 @@
               -- DOI ---------------------------------------------------------------
               ----------------------------------------------------------------------
               ELSIF p_tipo_operacion = 'DOI' THEN
-                  INSERT INTO dato_economico (
+                  INSERT INTO ${schemaPrefix}dato_economico (
                       id, proyecto_id, anualidad, tipo_operacion, tipo_dato_economico,
                       numero_documento, aplicacion_presupuestaria, fecha,
                       descripcion, tercero, importe_inicial, importe_iva
@@ -516,7 +516,7 @@
               -- DOM ---------------------------------------------------------------
               ----------------------------------------------------------------------
               ELSIF p_tipo_operacion = 'DOM' THEN
-                  INSERT INTO dato_economico (
+                  INSERT INTO ${schemaPrefix}dato_economico (
                       id, proyecto_id, anualidad, tipo_operacion, tipo_dato_economico,
                       aplicacion_presupuestaria, fecha, descripcion, importe_inicial
                   )
@@ -531,7 +531,7 @@
               -- FJF ---------------------------------------------------------------
               ----------------------------------------------------------------------
               ELSIF p_tipo_operacion = 'FJF' THEN
-                  INSERT INTO dato_economico (
+                  INSERT INTO ${schemaPrefix}dato_economico (
                       id, proyecto_id, anualidad, tipo_operacion,
                       aplicacion_presupuestaria, fecha, fecha_devengo,
                       numero_documento, descripcion,
@@ -552,7 +552,7 @@
               -- FJV ---------------------------------------------------------------
               ----------------------------------------------------------------------
               ELSIF p_tipo_operacion = 'FJV' THEN
-                  INSERT INTO dato_economico (
+                  INSERT INTO ${schemaPrefix}dato_economico (
                       id, proyecto_id, anualidad, tipo_operacion, aplicacion_presupuestaria,
                       fecha, fecha_salida, fecha_vuelta, fecha_devengo,
                       numero_documento, numero_comision,
@@ -645,7 +645,7 @@
                   )
                   VALUES (
                       v_id,
-                      TRUNC(DBMS_RANDOM.VALUE(1, 999)), -- invencion_id aleatorio
+                      p_proyecto_id, -- invencion_id
                       'GAS',
                       'Gasto',
                       SYSTIMESTAMP,
@@ -678,6 +678,25 @@
                       ROUND(v_importe1 * 0.21, 2)
                   );
 
+              ----------------------------------------------------------------------
+              -- REP ---------------------------------------------------------------
+              ----------------------------------------------------------------------
+              ELSIF p_tipo_operacion = 'REP' THEN
+                  INSERT INTO ${schemaPrefix}dato_economico(
+                      id, invencion_id, descripcion, tipo_operacion,
+                      fecha, numero_documento, tipo_dato_economico,
+                      importe_inicial
+                  )
+                  VALUES (
+                      v_id,
+                      p_proyecto_id,
+                      'Descripción mock REP para ' || v_aplicacion,
+                      'REP',
+                      SYSTIMESTAMP,
+                      'REF/' || v_id || '/REP',
+                      'Gasto',
+                      v_importe1
+                  );
 
               END IF;
 
@@ -686,8 +705,7 @@
     </sql>
   </changeSet>
 
-
-  <changeSet context="dev" author="master" id="00.01.00-dato-economico-procedure" dbms="mssql">
+  <changeSet context="dev" author="master" id="00.01.00-dato-economico-procedure-mssql" dbms="mssql">
     <sql splitStatements="false" stripComments="false">
     <![CDATA[
     CREATE OR ALTER PROCEDURE ${schemaPrefix}mock_insert_dato_economico
@@ -760,7 +778,7 @@
         ----------------------------------------------------
         ELSE IF @p_tipo_operacion = 'EPG'
         BEGIN
-            INSERT INTO dato_economico (
+            INSERT INTO ${schemaPrefix}dato_economico (
                 id, proyecto_id, anualidad, tipo_operacion, tipo_dato_economico,
                 aplicacion_presupuestaria, importe_presupuestado, importe_concedido,
                 importe_definitivo, gastado, pagado, pendiente_pago, reservado, disponible
@@ -781,7 +799,7 @@
         ----------------------------------------------------
         ELSE IF @p_tipo_operacion = 'EPI'
         BEGIN
-            INSERT INTO dato_economico (
+            INSERT INTO ${schemaPrefix}dato_economico (
                 id, proyecto_id, anualidad, tipo_operacion, tipo_dato_economico,
                 aplicacion_presupuestaria, importe_presupuestado, importe_definitivo,
                 derechos, cobros
@@ -798,7 +816,7 @@
         ----------------------------------------------------
         ELSE IF @p_tipo_operacion = 'DOG'
         BEGIN
-            INSERT INTO dato_economico (
+            INSERT INTO ${schemaPrefix}dato_economico (
                 id, proyecto_id, anualidad, tipo_operacion, tipo_dato_economico,
                 aplicacion_presupuestaria, numero_documento, fecha,
                 descripcion, gastado_ejecutado, gastado_comprometido, disponible
@@ -816,7 +834,7 @@
         ----------------------------------------------------
         ELSE IF @p_tipo_operacion = 'DOI'
         BEGIN
-            INSERT INTO dato_economico (
+            INSERT INTO ${schemaPrefix}dato_economico (
                 id, proyecto_id, anualidad, tipo_operacion, tipo_dato_economico,
                 numero_documento, aplicacion_presupuestaria, fecha,
                 descripcion, tercero, importe_inicial, importe_iva
@@ -834,7 +852,7 @@
         ----------------------------------------------------
         ELSE IF @p_tipo_operacion = 'DOM'
         BEGIN
-            INSERT INTO dato_economico (
+            INSERT INTO ${schemaPrefix}dato_economico (
                 id, proyecto_id, anualidad, tipo_operacion, tipo_dato_economico,
                 aplicacion_presupuestaria, fecha, descripcion, importe_inicial
             )
@@ -850,7 +868,7 @@
         ----------------------------------------------------
         ELSE IF @p_tipo_operacion = 'FJF'
         BEGIN
-            INSERT INTO dato_economico (
+            INSERT INTO ${schemaPrefix}dato_economico (
                 id, proyecto_id, anualidad, tipo_operacion,
                 aplicacion_presupuestaria, fecha, fecha_devengo,
                 numero_documento, descripcion,
@@ -872,7 +890,7 @@
         ----------------------------------------------------
         ELSE IF @p_tipo_operacion = 'FJV'
         BEGIN
-            INSERT INTO dato_economico (
+            INSERT INTO ${schemaPrefix}dato_economico (
                 id, proyecto_id, anualidad, tipo_operacion, aplicacion_presupuestaria,
                 fecha, fecha_salida, fecha_vuelta, fecha_devengo,
                 numero_documento, numero_comision,
@@ -967,7 +985,7 @@
             )
             VALUES (
                 @v_id,
-                FLOOR(RAND()*(999-1)+1), -- invencion_id aleatorio
+                @p_proyecto_id, -- invencion_id
                 'GAS',
                 'Gasto',
                 SYSDATETIME(),
@@ -1001,11 +1019,196 @@
                 ROUND(@v_importe1*0.21,2)
             );
         END
+        ----------------------------------------------------------------------
+        -- REP ---------------------------------------------------------------
+        ----------------------------------------------------------------------
+        ELSE IF @p_tipo_operacion = 'REP'
+        BEGIN
+            INSERT INTO ${schemaPrefix}dato_economico(
+                id, invencion_id, descripcion, tipo_operacion,
+                fecha, numero_documento, tipo_dato_economico,
+                importe_inicial
+            )
+            VALUES (
+                @v_id,
+                @p_proyecto_id,
+                'Descripción mock REP para ' + @v_aplicacion,
+                'REP',
+                SYSDATETIME(),
+                'REF/' + CAST(@v_id AS VARCHAR) + '/REP',
+                'Gasto',
+                @v_importe1
+            );
+        END
     END;
     ]]>
     </sql>
 
 
+  </changeSet>
+
+  <changeSet context="dev" author="master" id="00.01.00-dato-economico-cargar-datos-procedure-oracle" dbms="oracle">
+    <sql dbms="oracle" splitStatements="false" stripComments="false">
+      <![CDATA[
+        -- Crea registro en ejecución presupuestaria - estado actual
+        BEGIN
+        ${schemaPrefix}mock_insert_dato_economico(11345,2021,'EPA');
+        ${schemaPrefix}mock_insert_dato_economico(11345,2022,'EPA');
+        -- Crea registro en ejecución presupuestaria - gastos
+        ${schemaPrefix}mock_insert_dato_economico(11345,2021,'EPG');
+        ${schemaPrefix}mock_insert_dato_economico(11345,2022,'EPG');
+        -- Crea registro en ejecución presupuestaria - ingresos
+        ${schemaPrefix}mock_insert_dato_economico(11345,2021,'EPI');
+        ${schemaPrefix}mock_insert_dato_economico(11345,2022,'EPI');
+        -- Crea registro en detalle operaciones - gastos
+        ${schemaPrefix}mock_insert_dato_economico(11345,2021,'DOG');
+        ${schemaPrefix}mock_insert_dato_economico(11345,2022,'DOG');
+        -- Crea registro en detalle operaciones - ingresos
+        ${schemaPrefix}mock_insert_dato_economico(11345,2021,'DOI');
+        ${schemaPrefix}mock_insert_dato_economico(11345,2022,'DOI');
+        -- Crea registro en detalle operaciones - modificaciones
+        ${schemaPrefix}mock_insert_dato_economico(11345,2021,'DOM');
+        ${schemaPrefix}mock_insert_dato_economico(11345,2022,'DOM');
+        -- Crea registro en facturas y justificantes - facturas y gastos
+        ${schemaPrefix}mock_insert_dato_economico(11345,2021,'FJF');
+        ${schemaPrefix}mock_insert_dato_economico(11345,2022,'FJF');
+        -- Crea registro en facturas y justificantes - viajes y dietas
+        ${schemaPrefix}mock_insert_dato_economico(11345,2021,'FJV');
+        ${schemaPrefix}mock_insert_dato_economico(11345,2022,'FJV');
+        -- Crea registro en facturas y justificantes - personal contratado
+        ${schemaPrefix}mock_insert_dato_economico(11345,2021,'FJP');
+        ${schemaPrefix}mock_insert_dato_economico(11345,2022,'FJP');
+        -- Crea registro en facturas emitidas
+        ${schemaPrefix}mock_insert_dato_economico(11345,2021,'FEM');
+        ${schemaPrefix}mock_insert_dato_economico(11345,2022,'FEM');
+
+        ${schemaPrefix}mock_insert_dato_economico(35551,2021,'EPA');
+        -- Crea registro en ejecución presupuestaria - gastos
+        ${schemaPrefix}mock_insert_dato_economico(35551,2021,'EPG');
+        -- Crea registro en ejecución presupuestaria - ingresos
+        ${schemaPrefix}mock_insert_dato_economico(35551,2021,'EPI');
+        -- Crea registro en detalle operaciones - gastos
+        ${schemaPrefix}mock_insert_dato_economico(35551,2021,'DOG');
+        -- Crea registro en detalle operaciones - ingresos
+        ${schemaPrefix}mock_insert_dato_economico(35551,2021,'DOI');
+        -- Crea registro en detalle operaciones - modificaciones
+        ${schemaPrefix}mock_insert_dato_economico(35551,2021,'DOM');
+        -- Crea registro en facturas y justificantes - facturas y gastos
+        ${schemaPrefix}mock_insert_dato_economico(35551,2021,'FJF');
+        -- Crea registro en facturas y justificantes - viajes y dietas
+        ${schemaPrefix}mock_insert_dato_economico(35551,2021,'FJV');
+        -- Crea registro en facturas y justificantes - personal contratado
+        ${schemaPrefix}mock_insert_dato_economico(35551,2021,'FJP');
+        -- Crea registro en facturas emitidas
+        ${schemaPrefix}mock_insert_dato_economico(35551,2021,'FEM');
+
+        -- PII
+        ${schemaPrefix}mock_insert_dato_economico(113,null,'GAS');
+        ${schemaPrefix}mock_insert_dato_economico(113,null,'GAS');
+        ${schemaPrefix}mock_insert_dato_economico(111,null,'GAS');
+        ${schemaPrefix}mock_insert_dato_economico(112,null,'GAS');
+        ${schemaPrefix}mock_insert_dato_economico(107,null,'GAS');
+
+        ${schemaPrefix}mock_insert_dato_economico(35551,null,'ING');
+        ${schemaPrefix}mock_insert_dato_economico(35551,null,'ING');
+        ${schemaPrefix}mock_insert_dato_economico(35551,null,'ING');
+        ${schemaPrefix}mock_insert_dato_economico(34123,null,'ING');
+        ${schemaPrefix}mock_insert_dato_economico(34123,null,'ING');
+        ${schemaPrefix}mock_insert_dato_economico(11345,null,'ING');
+        ${schemaPrefix}mock_insert_dato_economico(11345,null,'ING');
+        ${schemaPrefix}mock_insert_dato_economico(11345,null,'ING');
+        ${schemaPrefix}mock_insert_dato_economico(33939,null,'ING');
+
+        ${schemaPrefix}mock_insert_dato_economico(35551,null,'REP');
+        ${schemaPrefix}mock_insert_dato_economico(35551,null,'REP');
+        ${schemaPrefix}mock_insert_dato_economico(34123,null,'REP');
+        ${schemaPrefix}mock_insert_dato_economico(11345,null,'REP');
+        ${schemaPrefix}mock_insert_dato_economico(11345,null,'REP');
+        ${schemaPrefix}mock_insert_dato_economico(33939,null,'REP');
+        END;
+      ]]>
+    </sql>
+  </changeSet>
+
+  <changeSet context="dev" author="master" id="00.01.00-dato-economico-cargar-datos-procedure-mssql" dbms="mssql">
+    <sql dbms="mssql" splitStatements="false" stripComments="false">
+      <![CDATA[
+        -- Ejecución presupuestaria - estado actual
+        EXEC ${schemaPrefix}mock_insert_dato_economico 11345, 2021, 'EPA';
+        EXEC ${schemaPrefix}mock_insert_dato_economico 11345, 2022, 'EPA';
+
+        -- Ejecución presupuestaria - gastos
+        EXEC ${schemaPrefix}mock_insert_dato_economico 11345, 2021, 'EPG';
+        EXEC ${schemaPrefix}mock_insert_dato_economico 11345, 2022, 'EPG';
+
+        -- Ejecución presupuestaria - ingresos
+        EXEC ${schemaPrefix}mock_insert_dato_economico 11345, 2021, 'EPI';
+        EXEC ${schemaPrefix}mock_insert_dato_economico 11345, 2022, 'EPI';
+
+        -- Detalle operaciones - gastos
+        EXEC ${schemaPrefix}mock_insert_dato_economico 11345, 2021, 'DOG';
+        EXEC ${schemaPrefix}mock_insert_dato_economico 11345, 2022, 'DOG';
+
+        -- Detalle operaciones - ingresos
+        EXEC ${schemaPrefix}mock_insert_dato_economico 11345, 2021, 'DOI';
+        EXEC ${schemaPrefix}mock_insert_dato_economico 11345, 2022, 'DOI';
+
+        -- Detalle operaciones - modificaciones
+        EXEC ${schemaPrefix}mock_insert_dato_economico 11345, 2021, 'DOM';
+        EXEC ${schemaPrefix}mock_insert_dato_economico 11345, 2022, 'DOM';
+
+        -- Facturas y justificantes - facturas y gastos
+        EXEC ${schemaPrefix}mock_insert_dato_economico 11345, 2021, 'FJF';
+        EXEC ${schemaPrefix}mock_insert_dato_economico 11345, 2022, 'FJF';
+
+        -- Facturas y justificantes - viajes y dietas
+        EXEC ${schemaPrefix}mock_insert_dato_economico 11345, 2021, 'FJV';
+        EXEC ${schemaPrefix}mock_insert_dato_economico 11345, 2022, 'FJV';
+
+        -- Facturas y justificantes - personal contratado
+        EXEC ${schemaPrefix}mock_insert_dato_economico 11345, 2021, 'FJP';
+        EXEC ${schemaPrefix}mock_insert_dato_economico 11345, 2022, 'FJP';
+
+        -- Facturas emitidas
+        EXEC ${schemaPrefix}mock_insert_dato_economico 11345, 2021, 'FEM';
+        EXEC ${schemaPrefix}mock_insert_dato_economico 11345, 2022, 'FEM';
+
+        EXEC ${schemaPrefix}mock_insert_dato_economico 35551, 2021, 'EPA';
+        EXEC ${schemaPrefix}mock_insert_dato_economico 35551, 2021, 'EPG';
+        EXEC ${schemaPrefix}mock_insert_dato_economico 35551, 2021, 'EPI';
+        EXEC ${schemaPrefix}mock_insert_dato_economico 35551, 2021, 'DOG';
+        EXEC ${schemaPrefix}mock_insert_dato_economico 35551, 2021, 'DOI';
+        EXEC ${schemaPrefix}mock_insert_dato_economico 35551, 2021, 'DOM';
+        EXEC ${schemaPrefix}mock_insert_dato_economico 35551, 2021, 'FJF';
+        EXEC ${schemaPrefix}mock_insert_dato_economico 35551, 2021, 'FJV';
+        EXEC ${schemaPrefix}mock_insert_dato_economico 35551, 2021, 'FJP';
+        EXEC ${schemaPrefix}mock_insert_dato_economico 35551, 2021, 'FEM';
+
+        -- PII
+        EXEC ${schemaPrefix}mock_insert_dato_economico 113,null,'GAS';
+        EXEC ${schemaPrefix}mock_insert_dato_economico 113,null,'GAS';
+        EXEC ${schemaPrefix}mock_insert_dato_economico 111,null,'GAS';
+        EXEC ${schemaPrefix}mock_insert_dato_economico 112,null,'GAS';
+        EXEC ${schemaPrefix}mock_insert_dato_economico 107,null,'GAS';
+
+        EXEC ${schemaPrefix}mock_insert_dato_economico 35551,null,'ING';
+        EXEC ${schemaPrefix}mock_insert_dato_economico 35551,null,'ING';
+        EXEC ${schemaPrefix}mock_insert_dato_economico 35551,null,'ING';
+        EXEC ${schemaPrefix}mock_insert_dato_economico 34123,null,'ING';
+        EXEC ${schemaPrefix}mock_insert_dato_economico 34123,null,'ING';
+        EXEC ${schemaPrefix}mock_insert_dato_economico 11345,null,'ING';
+        EXEC ${schemaPrefix}mock_insert_dato_economico 11345,null,'ING';
+        EXEC ${schemaPrefix}mock_insert_dato_economico 11345,null,'ING';
+        EXEC ${schemaPrefix}mock_insert_dato_economico 33939,null,'ING';
+
+        EXEC ${schemaPrefix}mock_insert_dato_economico 35551,null,'REP';
+        EXEC ${schemaPrefix}mock_insert_dato_economico 35551,null,'REP';
+        EXEC ${schemaPrefix}mock_insert_dato_economico 34123,null,'REP';
+        EXEC ${schemaPrefix}mock_insert_dato_economico 11345,null,'REP';
+        EXEC ${schemaPrefix}mock_insert_dato_economico 11345,null,'REP';
+        EXEC ${schemaPrefix}mock_insert_dato_economico 33939,null,'REP';
+      ]]>
+    </sql>
   </changeSet>
 
 </databaseChangeLog>

@@ -216,7 +216,7 @@
   <changeSet context="dev" author="user (generated)" id="00.01.00-12">
     <createSequence incrementBy="1" sequenceName="calendario_facturacion_seq" startValue="1" />
     <createTable tableName="calendario_facturacion">
-      <column name="id" type="BIGINT" autoIncrement="true">
+      <column name="id" type="BIGINT">
         <constraints nullable="false" primaryKey="true"
           primaryKeyName="calendario_facturacionPK" />
       </column>

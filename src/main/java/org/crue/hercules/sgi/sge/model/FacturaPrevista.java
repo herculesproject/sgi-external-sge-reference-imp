@@ -13,9 +13,6 @@ import javax.persistence.Table;
 import javax.validation.constraints.Max;
 import javax.validation.constraints.NotNull;
 
-import com.fasterxml.jackson.databind.annotation.JsonSerialize;
-import com.fasterxml.jackson.databind.ser.std.ToStringSerializer;
-
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
