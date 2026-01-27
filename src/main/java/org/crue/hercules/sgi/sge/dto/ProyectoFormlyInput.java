@@ -21,7 +21,6 @@ import lombok.NoArgsConstructor;
 @Builder
 public class ProyectoFormlyInput implements Serializable {
 
-  @NotNull
   private Instant fechaFin;
 
   @NotNull
