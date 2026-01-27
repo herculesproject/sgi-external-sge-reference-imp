@@ -47,39 +47,6 @@
   </changeSet>
 
   <changeSet author="user (generated)" id="00.01.00-4">
-    <createSequence incrementBy="1" sequenceName="proyecto_anualidad_partida_seq" startValue="1" />
-    <createTable tableName="proyecto_anualidad_partida">
-      <column name="id" type="BIGINT">
-        <constraints nullable="false" primaryKey="true"
-          primaryKeyName="proyecto_anualidad_partidaPK" />
-      </column>
-      <column name="anualidad" type="INT">
-        <constraints nullable="false" />
-      </column>
-      <column name="importe" type="DECIMAL(19, 2)">
-        <constraints nullable="false" />
-      </column>
-      <column name="partida_presupuestaria" type="VARCHAR(50)">
-        <constraints nullable="false" />
-      </column>
-      <column name="proyecto_id" type="BIGINT">
-        <constraints nullable="false" />
-      </column>
-      <column name="tipo" type="VARCHAR(1)">
-        <constraints nullable="false" />
-      </column>
-    </createTable>
-  </changeSet>
-
-  <changeSet author="user (generated)" id="00.01.00-5">
-    <addForeignKeyConstraint baseColumnNames="proyecto_id"
-      baseTableName="proyecto_anualidad_partida"
-      constraintName="FK_PROYECTO_ANUALIDAD_PARTIDA_PROYECTO" deferrable="false"
-      initiallyDeferred="false" referencedColumnNames="id" referencedTableName="proyecto"
-      validate="true" />
-  </changeSet>
-
-  <changeSet author="user (generated)" id="00.01.00-6">
     <createTable tableName="partida_presupuestaria_gasto">
       <column name="id" type="VARCHAR(255)">
         <constraints nullable="false" primaryKey="true"
@@ -96,7 +63,7 @@
     </createTable>
   </changeSet>
 
-  <changeSet author="user (generated)" id="00.01.00-7">
+  <changeSet author="user (generated)" id="00.01.00-5">
     <createTable tableName="partida_presupuestaria_ingreso">
       <column name="id" type="VARCHAR(255)">
         <constraints nullable="false" primaryKey="true"
@@ -113,7 +80,7 @@
     </createTable>
   </changeSet>
 
-  <changeSet author="user (generated)" id="00.01.00-8">
+  <changeSet author="user (generated)" id="00.01.00-6">
     <createSequence incrementBy="1" sequenceName="dato_economico_seq" startValue="1" />
     <createTable tableName="dato_economico">
       <column name="id" type="VARCHAR(255)">
@@ -178,7 +145,7 @@
       CHECK (proyecto_id IS NOT NULL OR invencion_id IS NOT NULL) </sql>
   </changeSet>
 
-  <changeSet author="user (generated)" id="00.01.00-10">
+  <changeSet author="user (generated)" id="00.01.00-7">
     <createSequence incrementBy="1" sequenceName="dato_economico_documento_seq" startValue="1" />
     <createTable tableName="dato_economico_documento">
       <column name="id" type="VARCHAR(255)">
@@ -201,19 +168,19 @@
     </createTable>
   </changeSet>
 
-  <changeSet author="user (generated)" id="00.01.00-11" dbms="!postgresql,!h2">
+  <changeSet author="user (generated)" id="00.01.00-8" dbms="!postgresql,!h2">
     <addColumn tableName="dato_economico_documento">
       <column name="contenido" type="BLOB" />
     </addColumn>
   </changeSet>
 
-  <changeSet author="user (generated)" id="00.01.00-11" dbms="postgresql,h2">
+  <changeSet author="user (generated)" id="00.01.00-9" dbms="postgresql,h2">
     <addColumn tableName="dato_economico_documento">
       <column name="contenido" type="BYTEA" />
     </addColumn>
   </changeSet>
 
-  <changeSet context="dev" author="user (generated)" id="00.01.00-12">
+  <changeSet context="dev" author="user (generated)" id="00.01.00-10">
     <createSequence incrementBy="1" sequenceName="calendario_facturacion_seq" startValue="1" />
     <createTable tableName="calendario_facturacion">
       <column name="id" type="BIGINT">

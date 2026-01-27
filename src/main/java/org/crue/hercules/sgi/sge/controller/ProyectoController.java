@@ -5,7 +5,6 @@ import java.util.List;
 import javax.validation.Valid;
 
 import org.crue.hercules.sgi.framework.web.bind.annotation.RequestPageable;
-import org.crue.hercules.sgi.sge.converter.ProyectoAnualidadPartidaConverter;
 import org.crue.hercules.sgi.sge.converter.ProyectoConverter;
 import org.crue.hercules.sgi.sge.converter.ProyectoFormlyConverter;
 import org.crue.hercules.sgi.sge.dto.ProyectoAnualidadPartidaInput;
@@ -14,8 +13,6 @@ import org.crue.hercules.sgi.sge.dto.ProyectoFormlyOutput;
 import org.crue.hercules.sgi.sge.dto.ProyectoOutput;
 import org.crue.hercules.sgi.sge.dto.ProyectoRelacionesEliminadasInput;
 import org.crue.hercules.sgi.sge.model.Proyecto;
-import org.crue.hercules.sgi.sge.model.ProyectoAnualidadPartida;
-import org.crue.hercules.sgi.sge.service.ProyectoAnualidadPartidaService;
 import org.crue.hercules.sgi.sge.service.ProyectoFormlyService;
 import org.crue.hercules.sgi.sge.service.ProyectoService;
 import org.json.JSONObject;
@@ -58,8 +55,6 @@ public class ProyectoController {
   private final ProyectoConverter converter;
   private final ProyectoFormlyService proyectoFormlyService;
   private final ProyectoFormlyConverter proyectoFormlyConverter;
-  private final ProyectoAnualidadPartidaService proyectoAnualidadService;
-  private final ProyectoAnualidadPartidaConverter proyectoAnualidadConverter;
 
   /**
    * Devuelve una lista paginada y filtrada de {@link Proyecto}.
@@ -136,17 +131,16 @@ public class ProyectoController {
   }
 
   /**
-   * Crea los {@link ProyectoAnualidadPartida} de la lista.
+   * Crea los {@link ProyectoAnualidadPartidaInput} de la lista.
    * 
-   * @param proyectoAnualidadPartidas lista de {@link ProyectoAnualidadPartida}.
+   * @param proyectoAnualidadPartidas lista de
+   *                                  {@link ProyectoAnualidadPartidaInput}.
    * @return {@link HttpStatus#OK}
    */
   @PostMapping(PATH_ANUALIDADES)
   public ResponseEntity<Void> notificarPartidasAnualidad(
       @RequestBody List<ProyectoAnualidadPartidaInput> proyectoAnualidadPartidas) {
-    log.debug("create(List<ProyectoAnualidadPartidaInput> proyectoAnualidadPartidas) - start");
-    proyectoAnualidadService.create(proyectoAnualidadConverter.convertToEntities(proyectoAnualidadPartidas));
-    log.debug("create(List<ProyectoAnualidadPartidaInput> proyectoAnualidadPartidas) - end");
+    log.debug("create(List<ProyectoAnualidadPartidaInput> proyectoAnualidadPartidas) - start - end");
     return new ResponseEntity<>(HttpStatus.OK);
   }
 
