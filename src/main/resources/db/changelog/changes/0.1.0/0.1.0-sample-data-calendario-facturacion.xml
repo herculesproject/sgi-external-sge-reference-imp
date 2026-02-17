@@ -9,6 +9,7 @@
 
   <changeSet context="dev" author="master" id="00.01.00-calendario-facturacion-1">
     <insert tableName="calendario_facturacion">
+      <column name="id" valueSequenceNext="calendario_facturacion_seq" />
       <column name="proyecto_sge_id" value="11345" />
       <column name="proyecto_id_sgi" value="1" />
       <column name="numero_prevision" value="1" />

@@ -180,7 +180,7 @@
     </addColumn>
   </changeSet>
 
-  <changeSet context="dev" author="user (generated)" id="00.01.00-10">
+  <changeSet author="user (generated)" id="00.01.00-10">
     <createSequence incrementBy="1" sequenceName="calendario_facturacion_seq" startValue="1" />
     <createTable tableName="calendario_facturacion">
       <column name="id" type="BIGINT">
