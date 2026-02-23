@@ -78,6 +78,7 @@ public class DatoEconomico extends BaseEntity {
   private static final String IMPORTE_DIETAS_COLUMN_NAME = "importe_dietas";
   private static final String PORCENTAJE_IVA_COLUMN_NAME = "porcentaje_iva";
   private static final String ESTADO_COLUMN_NAME = "estado";
+  private static final String CODIGO_ECONOMICO_COLUMN_NAME = "codigo_economico";
   private static final String SEQ_NAME = "dato_economico_seq";
 
   /** Id */
@@ -118,6 +119,10 @@ public class DatoEconomico extends BaseEntity {
   /** Descripción */
   @Column(name = DESCRIPCION_COLUMN_NAME, nullable = true)
   private String descripcion;
+
+  /** Código económico */
+  @Column(name = CODIGO_ECONOMICO_COLUMN_NAME, nullable = true)
+  private String codigoEconomico;
 
   /** Destino */
   @Column(name = DESTINO_COLUMN_NAME, nullable = true)

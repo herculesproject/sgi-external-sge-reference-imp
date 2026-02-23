@@ -4,7 +4,6 @@ import java.time.LocalDate;
 import java.util.Map;
 
 import org.crue.hercules.sgi.sge.model.BaseEntity;
-import org.crue.hercules.sgi.sge.model.CodigoEconomico;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -22,7 +21,7 @@ public class DatoEconomicoOutput extends BaseEntity {
   private String id;
   private String proyectoId;
   private String partidaPresupuestaria;
-  private CodigoEconomico codigoEconomico;
+  private CodigoEconomicoOutput codigoEconomico;
   private String anualidad;
   private String tipo;
   private LocalDate fechaDevengo;

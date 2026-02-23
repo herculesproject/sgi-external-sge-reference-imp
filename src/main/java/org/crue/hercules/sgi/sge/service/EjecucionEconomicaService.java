@@ -9,6 +9,7 @@ import java.util.stream.Collectors;
 
 import org.crue.hercules.sgi.framework.rsql.SgiRSQLJPASupport;
 import org.crue.hercules.sgi.sge.config.SgiConfigProperties;
+import org.crue.hercules.sgi.sge.dto.CodigoEconomicoOutput;
 import org.crue.hercules.sgi.sge.dto.DatoEconomicoColumnaDto;
 import org.crue.hercules.sgi.sge.dto.DatoEconomicoColumnaPiiDto;
 import org.crue.hercules.sgi.sge.dto.DatoEconomicoDetalleOutput;
@@ -20,7 +21,6 @@ import org.crue.hercules.sgi.sge.model.DocumentoDetalle;
 import org.crue.hercules.sgi.sge.repository.DatoEconomicoRepository;
 import org.crue.hercules.sgi.sge.repository.DocumentoDatoEconomicoRepository;
 import org.crue.hercules.sgi.sge.repository.predicate.DatoEconomicoPredicateResolver;
-import org.crue.hercules.sgi.sge.repository.specification.DatoEconomicoSpecifications;
 import org.crue.hercules.sgi.sge.util.DatoEconomicoColumnasFactory;
 import org.crue.hercules.sgi.sge.util.DatoEconomicoUtil;
 import org.springframework.data.domain.Pageable;
@@ -135,7 +135,7 @@ public class EjecucionEconomicaService {
               dato.getId(),
               dato.getProyectoId(),
               dato.getAplicacionPresupuestaria(),
-              null,
+              new CodigoEconomicoOutput(dato.getCodigoEconomico(), null),
               dato.getAnualidad() != null ? dato.getAnualidad().toString() : null,
               dato.getTipo() != null ? dato.getTipo().getDescripcion() : null,
               dato.getFechaDevengo() != null
